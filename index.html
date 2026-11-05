@@ -60,6 +60,8 @@ footer{border-color:var(--line)}
 </style></head><body><main class="app">
 <header><div class="brand"><span class="mark">✦</span>DHANU MOVIE ADDA</div><nav><a href="#home">Discover</a><a href="#top10">Top 10</a><a href="#watchlist">Watchlist</a></nav><div class="right"><input id="search" placeholder="⌕ Search movies..." aria-label="Search movies"><span class="admin"><span class="avatar">K</span>KANNADIGA</span></div></header>
 <section class="hero" id="home"><div class="heroText"><div class="eyebrow">Featured · Editor's pick</div><h1>THE ULTIMATE<br>MOVIE NIGHT.</h1><div class="meta"><span class="gold">★ 8.2</span>　2023　·　Science Fiction　·　2h 20m</div><p>Explore unforgettable stories, discover your next favourite film and keep every movie you want to watch in one beautiful place.</p><button class="btn primary" onclick="openMovie('Oppenheimer')">Explore movie ↗</button><button class="btn glass" onclick="document.querySelector('#top10').scrollIntoView()">Browse collection</button></div></section>
+
+<section class="section" id="liveMovies"><div class="head"><div><h2>Live from TMDB</h2><div class="sub">Trending movies and fresh discoveries · Live catalogue</div></div><span class="sub" id="tmdbStatus">Connecting…</span></div><div class="row" id="liveRow"><div class="empty">Loading live movie catalogue…</div></div></section>
 <section class="section" id="top10"><div class="head"><div><h2>Top 10 · IMDb favourites</h2><div class="sub">Starter chart · ratings are sample data</div></div></div><div class="top" id="topList"></div></section><div id="collections"></div>
 <section class="section" id="watchlist"><div class="head"><div><h2>My Watchlist</h2><div class="sub">Your personal cinema queue</div></div><span class="sub" id="count">0 saved</span></div><div class="row" id="watchRow"><div class="empty">Your watchlist is empty. Tap + on a movie to save it.</div></div></section>
 <section class="section"><div class="head"><div><h2>Search results</h2><div class="sub">Find a movie by title or genre</div></div></div><div class="row" id="results"><div class="empty">Start typing in the search bar above.</div></div></section>
@@ -96,4 +98,26 @@ function toggleSave(title){saved=saved.includes(title)?saved.filter(x=>x!==title
 function openMovie(title){let m=movies.find(x=>x.title===title);if(!m)return;document.getElementById("detailPoster").src=m.poster;document.getElementById("detailTitle").textContent=m.title;document.getElementById("detailMeta").textContent="★ "+m.rating+"　·　"+m.year+"　·　"+m.genre;document.getElementById("detailDesc").textContent=m.desc;let b=document.getElementById("detailSave");b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist";b.onclick=()=>{toggleSave(title);b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist"};document.getElementById("modal").classList.add("show")}
 function closeMovie(){document.getElementById("modal").classList.remove("show")}
 document.getElementById("search").addEventListener("input",e=>{let q=e.target.value.toLowerCase().trim(),el=document.getElementById("results");if(!q){el.innerHTML='<div class="empty">Start typing in the search bar above.</div>';return}let found=movies.filter(m=>(m.title+" "+m.genre).toLowerCase().includes(q));el.innerHTML=found.length?found.map(card).join(""):'<div class="empty">No matching movies in this demo catalogue.</div>'});render();
-</script></body></html>
+</script>
+<script>
+/* Live TMDB integration — requests go through the private Vercel API proxy. */
+(()=>{
+ const status=document.getElementById('tmdbStatus');
+ const liveRow=document.getElementById('liveRow');
+ const img=p=>p?'https://image.tmdb.org/t/p/w500'+p:'';
+ const mapMovie=m=>({title:m.title||m.name||'Untitled',year:(m.release_date||m.first_air_date||'').slice(0,4)||'—',rating:Number(m.vote_average||0).toFixed(1),genre:'Movie',poster:img(m.poster_path),desc:m.overview||'No synopsis is available yet.',tmdbId:m.id});
+ const request=async(params)=>{const u=new URL('/api/tmdb',location.origin);Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,v));const r=await fetch(u);const data=await r.json();if(!r.ok)throw new Error(data.error||'TMDB request failed');return data};
+ const saveIntoCatalogue=items=>items.map(mapMovie).filter(m=>m.tmdbId).map(m=>{const old=movies.find(x=>x.tmdbId===m.tmdbId||x.title.toLowerCase()===m.title.toLowerCase());if(old){Object.assign(old,m);return old}movies.push(m);return m});
+ const paint=(el,items)=>{el.innerHTML=items.length?items.map(card).join(''):'<div class="empty">No movies found.</div>'};
+ async function loadTrending(){try{const d=await request({type:'trending'});const items=saveIntoCatalogue(d.results||[]);paint(liveRow,items);status.textContent='Live data connected';render()}catch(e){status.textContent='API setup required';liveRow.innerHTML='<div class="empty">Live movie data will appear after the TMDB token is added to your Vercel environment variables.</div>';console.warn(e)}}
+ const searchInput=document.getElementById('search');
+ let timer;
+ searchInput.addEventListener('input',()=>{
+  clearTimeout(timer);const q=searchInput.value.trim();
+  if(!q)return;
+  timer=setTimeout(async()=>{try{const d=await request({type:'search',q});const items=saveIntoCatalogue(d.results||[]);const local=movies.filter(m=>(m.title+' '+m.genre).toLowerCase().includes(q.toLowerCase()));const merged=[...items,...local.filter(x=>!items.some(y=>y.title===x.title))];paint(document.getElementById('results'),merged);render()}catch(e){console.warn('TMDB search:',e)}},350);
+ });
+ loadTrending();
+})();
+</script>
+</body></html>
