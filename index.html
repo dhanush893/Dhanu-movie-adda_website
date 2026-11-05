@@ -65,7 +65,7 @@ footer{border-color:var(--line)}
 <section class="section" id="top10"><div class="head"><div><h2>Top 10 · IMDb favourites</h2><div class="sub">Starter chart · ratings are sample data</div></div></div><div class="top" id="topList"></div></section><div id="collections"></div>
 <section class="section" id="watchlist"><div class="head"><div><h2>My Watchlist</h2><div class="sub">Your personal cinema queue</div></div><span class="sub" id="count">0 saved</span></div><div class="row" id="watchRow"><div class="empty">Your watchlist is empty. Tap + on a movie to save it.</div></div></section>
 <section class="section"><div class="head"><div><h2>Search results</h2><div class="sub">Find a movie by title or genre</div></div></div><div class="row" id="results"><div class="empty">Start typing in the search bar above.</div></div></section>
-<footer><span>© 2026 DHANU MOVIE ADDA</span><span>Curated by KANNADIGA</span><span>Demo catalogue · Not live IMDb data</span></footer></main>
+<footer><span>© 2026 DHANU MOVIE ADDA</span><span>Curated by KANNADIGA</span><span>Movie data & images: TMDB · Not affiliated with IMDb</span></footer></main>
 <div class="modal" id="modal" onclick="if(event.target===this)closeMovie()"><div class="dialog"><button class="close" onclick="closeMovie()">×</button><img id="detailPoster" alt="Movie poster"><div class="detail"><div class="eyebrow">Movie details</div><h2 id="detailTitle"></h2><div class="meta" id="detailMeta"></div><p id="detailDesc"></p><button class="btn primary" id="detailSave"></button></div></div></div>
 <script>
 const movies=[
@@ -120,4 +120,31 @@ document.getElementById("search").addEventListener("input",e=>{let q=e.target.va
  loadTrending();
 })();
 </script>
-</body></html>
+<script>
+/* Enrich the existing movie detail sheet with current TMDB credits and trailer data. */
+window.openMovie=async function(title){
+ const m=movies.find(x=>x.title===title);if(!m)return;
+ document.getElementById("detailPoster").src=m.poster;
+ document.getElementById("detailTitle").textContent=m.title;
+ document.getElementById("detailMeta").textContent="★ "+m.rating+" · "+m.year+" · "+m.genre;
+ document.getElementById("detailDesc").textContent=m.desc||"Loading movie information…";
+ let extra=document.getElementById("tmdbExtra");
+ if(!extra){extra=document.createElement("div");extra.id="tmdbExtra";document.querySelector(".detail").appendChild(extra)}
+ extra.textContent=m.tmdbId?"Loading cast and trailer…":"";
+ const b=document.getElementById("detailSave");b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist";
+ b.onclick=()=>{toggleSave(title);b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist"};
+ document.getElementById("modal").classList.add("show");
+ if(!m.tmdbId)return;
+ try{
+  const u=new URL("/api/tmdb",location.origin);u.searchParams.set("type","details");u.searchParams.set("id",m.tmdbId);
+  const r=await fetch(u);if(!r.ok)throw new Error("Details unavailable");const d=await r.json();
+  document.getElementById("detailDesc").textContent=d.overview||m.desc||"No synopsis available.";
+  const genres=(d.genres||[]).map(g=>g.name).join(", ");
+  const cast=(d.credits?.cast||[]).slice(0,5).map(c=>c.name).join(" · ");
+  const trailer=(d.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer"&&v.official)|| (d.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer");
+  document.getElementById("detailMeta").textContent="★ "+Number(d.vote_average||0).toFixed(1)+" · "+(d.release_date||"").slice(0,4)+" · "+(d.runtime?d.runtime+" min":"Runtime unavailable")+(genres?" · "+genres:"");
+  extra.textContent=cast?"Cast: "+cast:"";
+  if(trailer){const link=document.createElement("a");link.href="https://www.youtube.com/watch?v="+encodeURIComponent(trailer.key);link.target="_blank";link.rel="noopener noreferrer";link.textContent="Watch official trailer ↗";link.style.cssText="display:inline-block;margin-top:12px;color:#e8bd69;font-size:13px";extra.appendChild(document.createElement("br"));extra.appendChild(link)}
+ }catch(e){extra.textContent="Additional cast and trailer details are temporarily unavailable."}
+};
+</script></body></html>
