@@ -3,6 +3,60 @@
 <style>
 :root{--bg:#09090b;--panel:#17171d;--muted:#a1a1aa;--gold:#e8bd69}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#f8f8fa;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Segoe UI,sans-serif}.app{max-width:1450px;margin:auto;padding:0 30px 55px}header{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:5;background:#09090be8;backdrop-filter:blur(20px);border-bottom:1px solid #ffffff16}.brand{font-size:13px;font-weight:850;letter-spacing:.1em}.mark{display:inline-grid;place-items:center;background:linear-gradient(140deg,#f8df9e,#a46b24);color:#17120a;border-radius:11px;width:34px;height:34px;margin-right:9px}nav{display:flex;gap:24px}a{color:var(--muted);text-decoration:none;font-size:13px}a:hover{color:white}.right{display:flex;align-items:center;gap:12px}input{width:200px;background:#ffffff0c;border:1px solid #ffffff20;border-radius:13px;padding:10px 13px;color:white;outline:none}.admin{font-size:11px;letter-spacing:.08em}.avatar{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#f5d58c,#79501f);color:#15100a;font-weight:bold;margin-right:7px}.hero{min-height:420px;margin:27px 0 44px;border-radius:28px;display:flex;align-items:end;overflow:hidden;background:linear-gradient(90deg,#07080bf2,#07080b9c 50%,transparent),linear-gradient(0deg,#07080b,transparent 60%),url('https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg') center/cover}.heroText{padding:45px;max-width:650px}.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}.hero h1{font-size:clamp(40px,6vw,68px);line-height:.96;letter-spacing:-.06em;margin:14px 0}.hero p{color:#c7c7ce;line-height:1.6;font-size:14px;max-width:500px}.meta{color:#c7c7ce;font-size:12px;margin:17px 0}.gold{color:var(--gold);font-weight:bold}.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:750;margin:5px 6px 0 0;cursor:pointer}.primary{background:var(--gold);color:#17120a}.glass{background:#ffffff1b;color:white;border:1px solid #ffffff25}.section{margin:38px 0}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}.head h2{font-size:21px;margin:0;letter-spacing:-.04em}.sub{font-size:12px;color:var(--muted);margin-top:5px}.row{display:grid;grid-auto-flow:column;grid-auto-columns:160px;gap:14px;overflow-x:auto;padding:2px 2px 14px}.card{cursor:pointer;min-width:0;transition:transform .2s}.card:hover{transform:translateY(-4px)}.poster{aspect-ratio:2/3;border-radius:15px;overflow:hidden;position:relative;background:#202027}.poster img{width:100%;height:100%;object-fit:cover}.rating{position:absolute;top:8px;left:8px;background:#09090be8;color:var(--gold);padding:5px 7px;border-radius:8px;font-size:11px}.save{position:absolute;right:8px;top:8px;border:1px solid #ffffff40;background:#09090bdc;color:white;border-radius:50%;width:29px;height:29px;cursor:pointer}.movieTitle{font-size:13px;font-weight:700;margin:9px 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.year{font-size:11px;color:var(--muted)}.top{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.topItem{display:flex;align-items:center;gap:10px;background:var(--panel);padding:10px;border:1px solid #ffffff10;border-radius:15px;min-width:0}.rank{font-size:22px;font-weight:900;color:#777}.topItem img{width:43px;height:61px;object-fit:cover;border-radius:7px}.topItem strong{font-size:11px;display:block;overflow:hidden;text-overflow:ellipsis}.topItem small{display:block;color:var(--muted);font-size:10px;margin-top:5px}.topItem em{font-style:normal;color:var(--gold);font-size:11px}.empty{padding:30px;border:1px dashed #393941;border-radius:16px;color:var(--muted);font-size:13px;text-align:center}.modal{display:none;position:fixed;inset:0;background:#000c;backdrop-filter:blur(10px);z-index:9;place-items:center;padding:20px}.modal.show{display:grid}.dialog{position:relative;display:grid;grid-template-columns:210px 1fr;max-width:720px;width:100%;background:#19191f;border:1px solid #ffffff25;border-radius:23px;overflow:hidden}.dialog>img{width:100%;height:100%;min-height:300px;object-fit:cover}.detail{padding:28px}.detail h2{margin:9px 0}.detail p{color:#bbb;line-height:1.6;font-size:13px}.close{position:absolute;right:12px;top:12px;border:0;border-radius:50%;width:30px;height:30px;background:#ffffff25;color:white;font-size:18px;cursor:pointer}footer{border-top:1px solid #292930;padding:25px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px}
 @media(max-width:850px){.top{grid-template-columns:repeat(2,1fr)}nav{gap:12px}.app{padding:0 18px 40px}}@media(max-width:600px){.app{padding:0 14px 35px}header{height:65px}.brand{font-size:10px}nav{display:none}input{width:120px;font-size:11px}.admin{font-size:0}.hero{min-height:430px;background-position:58% center}.heroText{padding:23px}.hero h1{font-size:43px}.hero p{font-size:12px}.row{grid-auto-columns:138px;gap:12px}.top{grid-template-columns:1fr}.dialog{grid-template-columns:110px 1fr}.dialog>img{min-height:270px}.detail{padding:22px 15px}.detail h2{font-size:20px}footer{flex-direction:column}}
+
+/* Premium motion and interaction layer */
+:root{color-scheme:dark;--gold-soft:#f4d99b;--line:rgba(255,255,255,.09)}
+::selection{background:rgba(232,189,105,.3);color:#fff}
+body{background:radial-gradient(ellipse at 50% -20%,rgba(167,119,48,.13),transparent 42%),var(--bg);-webkit-font-smoothing:antialiased}
+header{border-bottom:1px solid var(--line);box-shadow:0 10px 35px #0003}
+.brand{display:flex;align-items:center;white-space:nowrap}
+.mark{box-shadow:0 4px 18px #d3a64b35;transition:transform .35s ease,box-shadow .35s ease}
+.brand:hover .mark{transform:rotate(-9deg) scale(1.06);box-shadow:0 5px 25px #d3a64b55}
+a,.btn,.save,.card,.topItem,.poster img{transition:all .25s cubic-bezier(.2,.75,.25,1)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
+input{transition:border-color .2s,background .2s,box-shadow .2s}
+input:focus{border-color:#e8bd69aa;background:#ffffff12;box-shadow:0 0 0 4px #e8bd6918}
+.hero{position:relative;isolation:isolate;box-shadow:0 25px 70px #0008;animation:heroIn .8s ease both}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 35%,#ffffff08 50%,transparent 65%);background-size:220% 100%;animation:heroShimmer 9s ease-in-out infinite}
+.heroText{animation:riseIn .7s .12s both}
+.eyebrow{letter-spacing:.22em}
+.hero h1{text-wrap:balance;text-shadow:0 8px 35px #0008}
+.btn{position:relative;overflow:hidden;transform:translateZ(0)}
+.btn:active{transform:scale(.97)}
+.primary{box-shadow:0 8px 25px #d8aa5230}
+.primary:hover{background:var(--gold-soft);box-shadow:0 10px 30px #d8aa5250;transform:translateY(-2px)}
+.glass:hover{background:#ffffff2b;border-color:#ffffff55;transform:translateY(-2px)}
+.section{animation:riseIn .55s both}
+.head h2{letter-spacing:-.045em}
+.row{scrollbar-width:thin;scrollbar-color:#66502d transparent;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.row::-webkit-scrollbar{height:5px}.row::-webkit-scrollbar-thumb{background:#66502d;border-radius:99px}
+.card{scroll-snap-align:start}
+.card:hover{transform:translateY(-5px)}
+.poster{border:1px solid #ffffff12;box-shadow:0 10px 25px #0004}
+.poster:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0003,transparent 28%,transparent 72%,#0004);opacity:.55}
+.poster img{display:block;transition:transform .55s cubic-bezier(.2,.75,.25,1),filter .3s}
+.card:hover .poster img{transform:scale(1.045);filter:saturate(1.08)}
+.rating{z-index:1;backdrop-filter:blur(12px);border:1px solid #ffffff1a}
+.save{z-index:2;display:grid;place-items:center;font-size:17px;backdrop-filter:blur(12px);transition:transform .2s,background .2s}
+.save:hover{background:var(--gold);color:#17120a;transform:scale(1.08)}
+.topItem{border-radius:17px;background:linear-gradient(145deg,#1b1b22,#121216);transition:transform .25s,border-color .25s,background .25s}
+.topItem:hover{transform:translateY(-3px);border-color:#e8bd6955;background:#202027}
+.topItem img{flex-shrink:0}
+.rank{font-variant-numeric:tabular-nums}
+.empty{background:#ffffff04}
+.modal{opacity:0;transition:opacity .22s ease}
+.modal.show{opacity:1}
+.dialog{box-shadow:0 30px 100px #000b;animation:dialogIn .28s cubic-bezier(.2,.8,.2,1) both}
+.close{transition:background .2s,transform .2s}.close:hover{background:#ffffff40;transform:rotate(90deg)}
+footer{border-color:var(--line)}
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroIn{from{opacity:.65;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dialogIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes heroShimmer{0%,65%,100%{background-position:120% 0}80%{background-position:-20% 0}}
+@media(hover:none){.card:hover,.topItem:hover{transform:none}.card:hover .poster img{transform:none}}
+@media(max-width:600px){.hero{border-radius:22px}.heroText{max-width:100%}.section{margin:31px 0}.head h2{font-size:19px}.poster{border-radius:13px}.topItem{padding:11px}.right{gap:7px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
 </style></head><body><main class="app">
 <header><div class="brand"><span class="mark">✦</span>DHANU MOVIE ADDA</div><nav><a href="#home">Discover</a><a href="#top10">Top 10</a><a href="#watchlist">Watchlist</a></nav><div class="right"><input id="search" placeholder="⌕ Search movies..." aria-label="Search movies"><span class="admin"><span class="avatar">K</span>KANNADIGA</span></div></header>
 <section class="hero" id="home"><div class="heroText"><div class="eyebrow">Featured · Editor's pick</div><h1>THE ULTIMATE<br>MOVIE NIGHT.</h1><div class="meta"><span class="gold">★ 8.2</span>　2023　·　Science Fiction　·　2h 20m</div><p>Explore unforgettable stories, discover your next favourite film and keep every movie you want to watch in one beautiful place.</p><button class="btn primary" onclick="openMovie('Oppenheimer')">Explore movie ↗</button><button class="btn glass" onclick="document.querySelector('#top10').scrollIntoView()">Browse collection</button></div></section>
