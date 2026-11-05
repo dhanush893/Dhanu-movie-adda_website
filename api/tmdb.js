@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     params.set("query", q);
     params.set("include_adult", "false");
   } else if (type === "details") {
-    if (!id || !/^\\d+$/.test(String(id))) return res.status(400).json({ error: "A valid movie ID is required." });
+    if (!id || !/^\d+$/.test(String(id))) return res.status(400).json({ error: "A valid movie ID is required." });
     path = "/movie/" + id;
     params.set("append_to_response", "videos,credits");
   } else {
