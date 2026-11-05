@@ -74,7 +74,7 @@ footer{border-color:var(--line)}
 <section class="section" id="watchlist"><div class="head"><div><h2>My Watchlist</h2><div class="sub">Your personal cinema queue</div></div><span class="sub" id="count">0 saved</span></div><div class="row" id="watchRow"><div class="empty">Your watchlist is empty. Tap + on a movie to save it.</div></div></section>
 <section class="section"><div class="head"><div><h2>Search results</h2><div class="sub">Find a movie by title or genre</div></div></div><div class="row" id="results"><div class="empty">Start typing in the search bar above.</div></div></section>
 <footer><span>© 2026 DHANU MOVIE ADDA</span><span>Curated by KANNADIGA</span><span>Movie data & images: TMDB · Not affiliated with IMDb</span></footer></main>
-<div class="modal" id="modal" onclick="if(event.target===this)closeMovie()"><div class="dialog"><button class="close" onclick="closeMovie()">×</button><img id="detailPoster" alt="Movie poster"><div class="detail"><div class="eyebrow">Movie details</div><h2 id="detailTitle"></h2><div class="meta" id="detailMeta"></div><p id="detailDesc"></p><button class="btn primary" id="detailSave"></button></div></div></div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeMovie()"><div class="dialog"><button class="close" onclick="closeMovie()">×</button><img id="detailPoster" alt="Movie poster"><div class="detail"><div class="eyebrow">Movie details</div><h2 id="detailTitle"></h2><div class="meta" id="detailMeta"></div><p id="detailDesc"></p><button class="btn primary" id="detailSave"></button><div class="track-actions" id="trackingControls"></div></div></div></div>
 <script>
 const movies=[
 ["Oppenheimer",2023,"8.3","Drama","ptpr0kGAckfQkJeJIt8st5dglvd.jpg","The story of J. Robert Oppenheimer and his role in the development of the atomic bomb."],
@@ -164,7 +164,7 @@ window.openMovie=async function(title){
  if(!profiles.some(p=>p.id===activeId))activeId=profiles[0].id;
  const storageKey=id=>"dhanuLibraryV1:"+id;
  const read=id=>{try{return JSON.parse(localStorage.getItem(storageKey(id))||'{"watchlist":[],"activity":{}}')}catch(e){return {watchlist:[],activity:{}}}};
- let library=read(activeId);
+ let library=read(activeId);if(activeId==="main"&&!localStorage.getItem(storageKey(activeId))){try{library.watchlist=JSON.parse(localStorage.getItem("dhanuWatchlist")||"[]");}catch(e){library.watchlist=[];}}
  const activeProfile=()=>profiles.find(p=>p.id===activeId)||profiles[0];
  const persist=()=>{localStorage.setItem(PROFILE_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_KEY,activeId);localStorage.setItem(storageKey(activeId),JSON.stringify(library));};
  const baseRender=window.render;
