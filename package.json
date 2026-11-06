@@ -1,0 +1,12 @@
+{
+  "name": "dhanu-movie-adda",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DHANU MOVIE ADDA serverless APIs",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "mongodb": "^6.17.0"
+  }
+}
