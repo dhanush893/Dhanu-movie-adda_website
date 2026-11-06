@@ -10,6 +10,15 @@ A responsive movie discovery and personal-library website with a premium black-a
 - Export/import a JSON backup of profiles, watchlists, favourites and viewing history
 - Responsive layout and KANNADIGA admin branding
 
+## Visual identity and typography
+
+The interface uses a restrained three-font system:
+- **Sacramento** for the handwritten-style DHANU signature in the wordmark.
+- **Bricolage Grotesque** for cinematic display headings.
+- **Manrope** for navigation, controls, metadata and readable interface text.
+
+The fonts load from Google Fonts with system fallbacks. No font plugin or paid subscription is required. The homepage's generated genre shelves have been reduced to five non-overlapping groups; the Top 10 fallback is labelled as an editor's starter selection so sample ratings are not presented as IMDb data.
+
 ## Run and deploy
 The frontend is `index.html`. The live TMDB integration uses the Vercel serverless route in `api/tmdb.js`, so deploy the repository to Vercel for live movie data. GitHub Pages can host the static preview, but cannot execute this API route.
 
