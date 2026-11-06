@@ -31,6 +31,9 @@ Profiles, watchlists and viewing progress currently use browser localStorage. Th
 - `/api/tmdb?type=popular` — popular movies
 - `/api/tmdb?type=search&q=movie-name` — movie search
 - `/api/tmdb?type=details&id=TMDB_ID` — movie details, credits and videos
+- `/api/catalog?type=movie` or `tv` — trending movies/series; add `&q=...` to search
+- `/api/catalog?type=anime` or `manga` — AniList catalogue and search
+- `/api/catalog?type=novel` — Open Library catalogue and search
 
 ## Data attribution and licensing
 Movie and TV metadata/images are provided by **The Movie Database (TMDB)**; anime/manga metadata are from **AniList**; book catalogue metadata is from **Open Library**. This project is not endorsed or certified by TMDB. Follow each provider's current attribution, API terms and usage rules; commercial use may require separate permission or licensing. See:
