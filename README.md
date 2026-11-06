@@ -5,9 +5,9 @@ A responsive movie discovery and personal-library website with a premium black-a
 ## Features
 - Live trending movie feed, search and movie metadata through TMDB
 - Posters, synopsis, release year, TMDB rating, genres, runtime, cast and official YouTube trailers when available
-- Multiple local profiles (up to six), each with its own watchlist and viewing activity
+- Multiple local profiles (up to six), each with its own watchlist, favourites and viewing activity
 - Continue Watching, progress tracking and mark-as-watched controls
-- Export/import a JSON backup of profiles, watchlists and viewing history
+- Export/import a JSON backup of profiles, watchlists, favourites and viewing history
 - Responsive layout and KANNADIGA admin branding
 
 ## Run and deploy
@@ -22,7 +22,7 @@ The frontend is `index.html`. The live TMDB integration uses the Vercel serverle
 Never put the token in `index.html`, GitHub source, or a public chat. The backend proxy keeps it server-side.
 
 ## Profiles and sync status
-Profiles, watchlists and viewing progress are cached in browser localStorage. After deploying the account API with MongoDB and a session secret, users can sign in to sync this data across devices. The first sign-in merges the local library with the account library. Export/import JSON backups remain available for manual recovery.
+Profiles, watchlists, favourites and viewing progress are cached in browser localStorage. After deploying the account API with MongoDB and a session secret, users can sign in to sync this data across devices. The first sign-in merges the local library with the account library. Export/import JSON backups remain available for manual recovery.
 
 ## API route
 - `/api/tmdb?type=trending` — trending movies
@@ -36,7 +36,7 @@ Profiles, watchlists and viewing progress are cached in browser localStorage. Af
 
 ## Secure accounts and cloud sync
 
-The web app includes account registration/sign-in and a MongoDB-backed cloud library API. Once configured and deployed, each account stores its own profiles, watchlists and viewing activity. The first successful sign-in uploads the current browser library and merges it with the account's cloud copy; watchlists are combined and the most recently updated progress record wins.
+The web app includes account registration/sign-in and a MongoDB-backed cloud library API. Once configured and deployed, each account stores its own profiles, watchlists, favourites and viewing activity. The first successful sign-in uploads the current browser library and merges it with the account's cloud copy; watchlists are combined and the most recently updated progress record wins.
 
 ### Required Vercel environment variables
 
@@ -67,7 +67,7 @@ The API hashes passwords with Node.js scrypt, signs short-lived session tokens w
 ### Sync and recovery behavior
 
 - Local browser storage remains available if the network or account service is unavailable; the interface reports sync errors rather than deleting local changes.
-- On sign-in, local profiles and libraries are merged into the signed-in account. Watchlists are unioned; progress entries use the latest \`updatedAt\` timestamp.
+- On sign-in, local profiles and libraries are merged into the signed-in account. Watchlists and favourites are unioned; progress entries use the latest \`updatedAt\` timestamp.
 - Export/import JSON backup remains available as an independent recovery path.
 - Cloud data is not a substitute for backups. Configure MongoDB Atlas backups and periodically export the app library.
 - Signing out clears the session cookie but does not delete the local library or cloud account data.
