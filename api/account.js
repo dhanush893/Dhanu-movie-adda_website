@@ -94,6 +94,7 @@ function validateSnapshot(input) {
   for (const p of profiles) {
     const lib = input.libraries[p.id] || {};
     const watchlist = Array.isArray(lib.watchlist) ? lib.watchlist.filter(x => typeof x === "string" && x.length <= 220).slice(0, 1000) : [];
+    const favourites = Array.isArray(lib.favourites) ? [...new Set(lib.favourites.filter(x => typeof x === "string" && x.length <= 220))].slice(0, 1000) : [];
     const sourceActivity = lib.activity && typeof lib.activity === "object" && !Array.isArray(lib.activity) ? lib.activity : {};
     const activity = {};
     for (const [title, a] of Object.entries(sourceActivity).slice(0, 1000)) {
@@ -102,7 +103,7 @@ function validateSnapshot(input) {
       const parsed = Date.parse(a.updatedAt || "");
       activity[title] = { progress, watched: Boolean(a.watched) || progress >= 100, updatedAt: Number.isFinite(parsed) ? new Date(parsed).toISOString() : new Date(0).toISOString() };
     }
-    libraries[p.id] = { watchlist: [...new Set(watchlist)], activity };
+    libraries[p.id] = { watchlist: [...new Set(watchlist)], favourites, activity };
   }
   const activeId = profiles.some(p => p.id === input.activeId) ? input.activeId : profiles[0].id;
   return { profiles, activeId, libraries };
@@ -124,7 +125,7 @@ function mergeSnapshots(left, right) {
       const previous = activity[title];
       if (!previous || Date.parse(item.updatedAt) >= Date.parse(previous.updatedAt)) activity[title] = item;
     }
-    libraries[p.id] = { watchlist: [...new Set([...(a.watchlist || []), ...(b.watchlist || [])])].slice(0, 1000), activity };
+    libraries[p.id] = { watchlist: [...new Set([...(a.watchlist || []), ...(b.watchlist || [])])].slice(0, 1000), favourites: [...new Set([...(a.favourites || []), ...(b.favourites || [])])].slice(0, 1000), activity };
   }
   return { profiles, activeId: right.profiles.some(p => p.id === right.activeId) ? right.activeId : left.activeId, libraries };
 }
