@@ -143,7 +143,7 @@ module.exports = async (req, res) => {
   if (action === "logout" && req.method === "POST") { setCookie(res, "", 0); return json(res, 200, { ok: true }); }
   const secret = process.env.SESSION_SECRET;
   if (!secret || secret.length < 32) return json(res, 503, { error: "SESSION_SECRET must be configured with at least 32 characters." });
-  if (req.method !== "GET" && req.headers["content-length"] && Number(req.headers["content-length"]) > MAX_BODY_BYTES) return json(res, 413, { error: "Request is too large." });
+  if (req.method !== "GET" && ((req.headers["content-length"] && Number(req.headers["content-length"]) > MAX_BODY_BYTES) || Buffer.byteLength(JSON.stringify(req.body || {})) > MAX_BODY_BYTES)) return json(res, 413, { error: "Request is too large." });
   try {
     const users = await dbCollection();
     if (action === "register" || action === "login") {
