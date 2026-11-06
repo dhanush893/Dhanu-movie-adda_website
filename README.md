@@ -33,9 +33,11 @@ Profiles, watchlists and viewing progress currently use browser localStorage. Th
 - `/api/tmdb?type=details&id=TMDB_ID` — movie details, credits and videos
 
 ## Data attribution and licensing
-Movie metadata and images are provided by **The Movie Database (TMDB)**. This project is not endorsed or certified by TMDB. Follow TMDB's current attribution and API terms; commercial use may require a separate license. See:
+Movie and TV metadata/images are provided by **The Movie Database (TMDB)**; anime/manga metadata are from **AniList**; book catalogue metadata is from **Open Library**. This project is not endorsed or certified by TMDB. Follow each provider's current attribution, API terms and usage rules; commercial use may require separate permission or licensing. See:
 - https://developer.themoviedb.org/docs/faq
 - https://developer.themoviedb.org/docs/authentication-application
+- https://anilist.gitbook.io/anilist-apiv2-docs/
+- https://openlibrary.org/developers/api
 
 IMDb is not scraped or represented as the source of the live data.
 
