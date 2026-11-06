@@ -136,15 +136,16 @@ async function currentUser(req, users, secret) {
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("Vary", "Cookie");
-  const secret = process.env.SESSION_SECRET;
-  if (!secret || secret.length < 32) return json(res, 503, { error: "SESSION_SECRET must be configured with at least 32 characters." });
   const action = String(req.query?.action || "");
   if (req.method !== "GET" && req.method !== "POST" && req.method !== "PUT") return json(res, 405, { error: "Method not allowed." });
   if (req.method !== "GET" && !checkOrigin(req)) return json(res, 403, { error: "Request origin rejected." });
+  if (req.method !== "GET" && !String(req.headers["content-type"] || "").toLowerCase().startsWith("application/json")) return json(res, 415, { error: "Send account changes as JSON." });
+  if (action === "logout" && req.method === "POST") { setCookie(res, "", 0); return json(res, 200, { ok: true }); }
+  const secret = process.env.SESSION_SECRET;
+  if (!secret || secret.length < 32) return json(res, 503, { error: "SESSION_SECRET must be configured with at least 32 characters." });
   if (req.method !== "GET" && req.headers["content-length"] && Number(req.headers["content-length"]) > MAX_BODY_BYTES) return json(res, 413, { error: "Request is too large." });
   try {
     const users = await dbCollection();
-    if (action === "logout" && req.method === "POST") { setCookie(res, "", 0); return json(res, 200, { ok: true }); }
     if (action === "register" || action === "login") {
       if (req.method !== "POST") return json(res, 405, { error: "Method not allowed." });
       if (rateLimited(req, action)) return json(res, 429, { error: "Too many attempts. Try again later." });
