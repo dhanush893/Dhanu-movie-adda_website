@@ -22,9 +22,7 @@ The frontend is `index.html`. The live TMDB integration uses the Vercel serverle
 Never put the token in `index.html`, GitHub source, or a public chat. The backend proxy keeps it server-side.
 
 ## Profiles and sync status
-Profiles, watchlists and viewing progress currently use browser localStorage. They are separated by profile on the current device. Use **Library Sync & Backup → Export backup** to save a portable JSON backup, then **Import backup** on another device.
-
-**Cloud sync is not yet connected.** Real cross-device automatic sync requires a backend database and secure user authentication; this UI does not claim otherwise.
+Profiles, watchlists and viewing progress are cached in browser localStorage. After deploying the account API with MongoDB and a session secret, users can sign in to sync this data across devices. The first sign-in merges the local library with the account library. Export/import JSON backups remain available for manual recovery.
 
 ## API route
 - `/api/tmdb?type=trending` — trending movies
