@@ -20,30 +20,17 @@ no framework or build step required.
   `localStorage`, no account or backend needed
 - Responsive: bottom tab bar on mobile, top nav on desktop
 
-## Setup
+## Setup and deployment
 
-1. Get a free TMDB API key (v3 auth) at
-   [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api) —
-   takes about a minute, no credit card.
-2. Open `js/config.js` and paste your key in place of
-   `YOUR_TMDB_API_KEY_HERE`.
-3. Open `index.html` in a browser (or serve the folder with any static
-   server, e.g. `npx serve` / the VS Code "Live Server" extension).
+This project uses Vercel serverless API routes. TMDB credentials must stay on the server; do not paste API tokens into frontend JavaScript or commit them to GitHub.
 
-Until a key is added, the site runs fine and shows a friendly prompt
-instead of movie data.
+1. Import this repository into Vercel and deploy it.
+2. In **Vercel → Project Settings → Environment Variables**, add `TMDB_API_TOKEN` with your TMDB API Read Access Token (Bearer token).
+3. If you use the optional OMDb enrichment, add `OMDB_API_KEY` as a second server-side environment variable.
+4. Redeploy after adding or changing environment variables.
+5. Open the deployed site and check `/api/tmdb?type=trending`. A successful response should be JSON containing a `results` array. If the response says the token is not configured, check the Vercel variable name and deployment environment (Production/Preview).
 
-> **Note:** TMDB's v3 key is a client-side key by design, which is why
-> it lives in a plain JS file here — normal for a small/demo project
-> like this. For a production app with real traffic, proxy requests
-> through a small backend instead of shipping the key to the browser.
-
-## Deploying to GitHub Pages
-
-1. Push this repo to GitHub.
-2. In **Settings → Pages**, set the source to the `main` branch
-   (root).
-3. Your site will be live at `https://<username>.github.io/<repo>/`.
+The frontend calls the same-origin `/api/tmdb` and `/api/omdb` endpoints. Opening `index.html` directly or deploying only to GitHub Pages will not run these serverless endpoints; use Vercel or another host configured to run the `api/` functions.
 
 ## Tech stack
 
