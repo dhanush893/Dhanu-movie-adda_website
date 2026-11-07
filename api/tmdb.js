@@ -29,6 +29,18 @@ module.exports = async (req, res) => {
     params.set("sort_by", "popularity.desc");
     params.set("vote_count.gte", "10");
     params.set("include_adult", "false");
+  } else if (type === "recent") {
+    const now = new Date();
+    const end = now.toISOString().slice(0, 10);
+    const start = new Date(now.getTime() - 120 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    path = "/discover/movie";
+    params.set("with_original_language", "kn|hi|te|ta");
+    params.set("sort_by", "primary_release_date.desc");
+    params.set("primary_release_date.gte", start);
+    params.set("primary_release_date.lte", end);
+    params.set("include_adult", "false");
+    params.set("vote_count.gte", "1");
+    params.set("page", "1");
   } else if (type === "popular") {
     path = "/movie/popular";
   } else if (type === "search") {
