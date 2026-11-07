@@ -36,3 +36,5 @@
  .recent-track{gap:11px;animation-duration:58s}
  .hero{margin-top:12px}
 }
+
+.library-intro{padding:14px 0 0}.library-intro h2{font-family:'Bebas Neue',sans-serif;font-size:31px;letter-spacing:1px;margin:0}.library-intro p{margin:3px 0 0;color:var(--muted);font-size:13px}@media(max-width:700px){.library-intro{padding-top:8px}.library-intro h2{font-size:28px}}
