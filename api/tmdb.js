@@ -3,7 +3,7 @@
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
   const token = process.env.TMDB_API_TOKEN;
-  if (!token) return res.status(503).json({ error: "TMDB_API_TOKEN is not configured on the server." });
+  if (!token) return res.status(503).json({ error: "TMDB is not configured yet. Add TMDB_API_TOKEN in Vercel → Project Settings → Environment Variables, then redeploy." });
 
   const { type, q, id } = req.query || {};
   let path;
@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
     const end = now.toISOString().slice(0, 10);
     const start = new Date(now.getTime() - 120 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
     path = "/discover/movie";
-    params.set("with_original_language", "kn|hi|te|ta");
+    params.set("with_original_language", "kn,hi,te,ta");
     params.set("sort_by", "primary_release_date.desc");
     params.set("primary_release_date.gte", start);
     params.set("primary_release_date.lte", end);
@@ -57,13 +57,22 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const response = await fetch("https://api.themoviedb.org/3" + path + "?" + params.toString(), {
-      headers: { Authorization: "Bearer " + token, Accept: "application/json" }
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    let response;
+    try {
+      response = await fetch("https://api.themoviedb.org/3" + path + "?" + params.toString(), {
+        headers: { Authorization: "Bearer " + token, Accept: "application/json" },
+        signal: controller.signal
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
     const data = await response.json();
     if (!response.ok) return res.status(response.status).json({ error: data.status_message || "TMDB request failed." });
     return res.status(200).json(data);
   } catch (error) {
-    return res.status(502).json({ error: "Could not reach TMDB." });
+    const timedOut = error && error.name === "AbortError";
+    return res.status(502).json({ error: timedOut ? "TMDB took too long to respond. Please try again." : "Could not reach TMDB. Please try again shortly." });
   }
 };
