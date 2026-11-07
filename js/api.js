@@ -28,7 +28,12 @@
       Object.entries(params).forEach(([key, value]) => { if (value != null && value !== "") url.searchParams.set(key, value); });
       return request(url);
     },
-    watchmode(params = {}) {\n      const url = new URL("/api/watchmode", location.origin);\n      Object.entries(params).forEach(([key, value]) => { if (value != null && value !== "") url.searchParams.set(key, value); });\n      return request(url);\n    },\n    account(action, method = "GET", body) {
+    watchmode(params = {}) {
+      const url = new URL("/api/watchmode", location.origin);
+      Object.entries(params).forEach(([key, value]) => { if (value != null && value !== "") url.searchParams.set(key, value); });
+      return request(url);
+    },
+    account(action, method = "GET", body) {
       const url = new URL(config.accountEndpoint || "/api/account", location.origin);
       url.searchParams.set("action", action);
       return fetch(url, { method, credentials: "same-origin", headers: body ? { "Content-Type": "application/json" } : {}, body: body ? JSON.stringify(body) : undefined }).then(async r => {
