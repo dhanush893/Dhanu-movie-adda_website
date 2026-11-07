@@ -18,6 +18,8 @@ module.exports = async (req, res) => {
     path="/discover/movie"; params.set("watch_region","IN"); params.set("with_watch_monetization_types","flatrate"); params.set("sort_by","primary_release_date.desc"); params.set("primary_release_date.gte",start); params.set("primary_release_date.lte",today); params.set("vote_count.gte","10"); params.set("include_video","false");
   } else if (type === "kannada") {
     path="/discover/movie"; params.set("with_original_language","kn"); params.set("sort_by","popularity.desc"); params.set("vote_count.gte","10"); params.set("include_adult","false");
+  } else if (type === "kannadaTop10") {
+    path="/discover/movie"; params.set("with_original_language","kn"); params.set("sort_by","vote_average.desc"); params.set("vote_count.gte","20"); params.set("include_adult","false"); params.set("page","1");
   } else if (type === "recent") {
     const start=new Date(Date.now()-120*86400000).toISOString().slice(0,10);
     path="/discover/movie"; params.set("with_original_language","kn,hi,te,ta"); params.set("sort_by","primary_release_date.desc"); params.set("primary_release_date.gte",start); params.set("primary_release_date.lte",today); params.set("include_adult","false"); params.set("vote_count.gte","1"); params.set("page","1");
