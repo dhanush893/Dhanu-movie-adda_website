@@ -1,7 +1,7 @@
 // Server-side TMDB proxy. Only Kannada, Telugu, Tamil, Hindi and Malayalam
 // original-language titles are returned by this application.
 const SUPPORTED_LANGUAGES = ["kn", "te", "ta", "hi", "ml"];
-const LANGUAGE_FILTER = SUPPORTED_LANGUAGES.join(",");
+const LANGUAGE_FILTER = SUPPORTED_LANGUAGES.join("|");
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
   const token = process.env.TMDB_API_TOKEN;
