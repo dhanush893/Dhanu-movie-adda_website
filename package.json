@@ -10,6 +10,6 @@
     "mongodb": "^6.17.0"
   },
   "scripts": {
-    "check": "node --check api/account.js && node --check api/catalog.js && node --check api/tmdb.js && node scripts/check-inline.js"
+    "check": "node --check api/account.js && node --check api/catalog.js && node --check api/tmdb.js && node --check api/omdb.js && node scripts/check-inline.js"
   }
 }
