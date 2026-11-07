@@ -187,28 +187,79 @@ document.getElementById("search").addEventListener("input",e=>{let q=e.target.va
 /* Enrich the existing movie detail sheet with current TMDB credits and trailer data. */
 window.openMovie=async function(title){
  const m=movies.find(x=>x.title===title);if(!m)return;
- document.getElementById("detailPoster").src=m.poster;
- document.getElementById("detailTitle").textContent=m.title;
+ const detailTitle=document.getElementById("detailTitle");
+ document.getElementById("detailPoster").src=m.poster||"";
+ detailTitle.textContent=m.title;
  document.getElementById("detailMeta").textContent="★ "+m.rating+" · "+m.year+" · "+m.genre;
  document.getElementById("detailDesc").textContent=m.desc||"Loading movie information…";
+
  let extra=document.getElementById("tmdbExtra");
  if(!extra){extra=document.createElement("div");extra.id="tmdbExtra";document.querySelector(".detail").appendChild(extra)}
+ let omdbExtra=document.getElementById("omdbExtra");
+ if(!omdbExtra){omdbExtra=document.createElement("div");omdbExtra.id="omdbExtra";omdbExtra.style.cssText="margin-top:15px;padding-top:12px;border-top:1px solid #ffffff18";document.querySelector(".detail").appendChild(omdbExtra)}
  extra.textContent=m.tmdbId?"Loading cast and trailer…":"";
- const b=document.getElementById("detailSave");b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist";
+ omdbExtra.textContent="Loading additional ratings and movie information…";
+
+ const b=document.getElementById("detailSave");
+ b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist";
  b.onclick=()=>{toggleSave(title);b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist"};
  document.getElementById("modal").classList.add("show");
- if(!m.tmdbId)return;
+
+ let tmdbData=null;
+ if(m.tmdbId){
+  try{
+   const u=new URL("/api/tmdb",location.origin);u.searchParams.set("type","details");u.searchParams.set("id",m.tmdbId);
+   const r=await fetch(u);if(!r.ok)throw new Error("TMDB details unavailable");
+   tmdbData=await r.json();
+   if(detailTitle.textContent!==m.title)return;
+   document.getElementById("detailDesc").textContent=tmdbData.overview||m.desc||"No synopsis available.";
+   const genres=(tmdbData.genres||[]).map(g=>g.name).join(", ");
+   const cast=(tmdbData.credits?.cast||[]).slice(0,5).map(c=>c.name).join(" · ");
+   const trailer=(tmdbData.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer"&&v.official)|| (tmdbData.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer");
+   document.getElementById("detailMeta").textContent="★ "+Number(tmdbData.vote_average||0).toFixed(1)+" · "+(tmdbData.release_date||"").slice(0,4)+" · "+(tmdbData.runtime?tmdbData.runtime+" min":"Runtime unavailable")+(genres?" · "+genres:"");
+   extra.textContent=cast?"Cast: "+cast:"";
+   if(trailer){const link=document.createElement("a");link.href="https://www.youtube.com/watch?v="+encodeURIComponent(trailer.key);link.target="_blank";link.rel="noopener noreferrer";link.textContent="Watch official trailer ↗";link.style.cssText="display:inline-block;margin-top:12px;color:#e8bd69;font-size:13px";extra.appendChild(document.createElement("br"));extra.appendChild(link)}
+  }catch(e){extra.textContent="Additional TMDB cast and trailer details are temporarily unavailable."}
+ }
+
+ // Prefer the exact IMDb ID returned by TMDB; fall back to title and year for older catalogue entries.
  try{
-  const u=new URL("/api/tmdb",location.origin);u.searchParams.set("type","details");u.searchParams.set("id",m.tmdbId);
-  const r=await fetch(u);if(!r.ok)throw new Error("Details unavailable");const d=await r.json();
-  document.getElementById("detailDesc").textContent=d.overview||m.desc||"No synopsis available.";
-  const genres=(d.genres||[]).map(g=>g.name).join(", ");
-  const cast=(d.credits?.cast||[]).slice(0,5).map(c=>c.name).join(" · ");
-  const trailer=(d.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer"&&v.official)|| (d.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer");
-  document.getElementById("detailMeta").textContent="★ "+Number(d.vote_average||0).toFixed(1)+" · "+(d.release_date||"").slice(0,4)+" · "+(d.runtime?d.runtime+" min":"Runtime unavailable")+(genres?" · "+genres:"");
-  extra.textContent=cast?"Cast: "+cast:"";
-  if(trailer){const link=document.createElement("a");link.href="https://www.youtube.com/watch?v="+encodeURIComponent(trailer.key);link.target="_blank";link.rel="noopener noreferrer";link.textContent="Watch official trailer ↗";link.style.cssText="display:inline-block;margin-top:12px;color:#e8bd69;font-size:13px";extra.appendChild(document.createElement("br"));extra.appendChild(link)}
- }catch(e){extra.textContent="Additional cast and trailer details are temporarily unavailable."}
+  const u=new URL("/api/omdb",location.origin);
+  if(tmdbData?.external_ids?.imdb_id)u.searchParams.set("imdbId",tmdbData.external_ids.imdb_id);
+  else{
+   u.searchParams.set("title",m.title);
+   if(/^\d{4}$/.test(String(m.year||"")))u.searchParams.set("year",String(m.year));
+  }
+  const r=await fetch(u);const data=await r.json();
+  if(!r.ok)throw new Error(data.error||"OMDb details unavailable");
+  if(detailTitle.textContent!==m.title)return;
+  omdbExtra.textContent="";
+  const heading=document.createElement("div");heading.textContent="ADDITIONAL INFORMATION · OMDb";heading.style.cssText="color:#e8bd69;font-size:10px;font-weight:800;letter-spacing:.14em;margin-bottom:10px";omdbExtra.appendChild(heading);
+  const line=(label,value)=>{
+   if(!value||value==="N/A")return;
+   const p=document.createElement("p");p.style.cssText="margin:7px 0;color:#c9c9cf;font-size:12px;line-height:1.55";
+   const strong=document.createElement("strong");strong.textContent=label+": ";strong.style.color="#f4d99b";
+   p.append(strong,document.createTextNode(value));omdbExtra.appendChild(p);
+  };
+  const scoreParts=[];
+  if(data.imdbRating&&data.imdbRating!=="N/A")scoreParts.push("IMDb "+data.imdbRating+"/10");
+  if(data.imdbVotes&&data.imdbVotes!=="N/A")scoreParts.push(data.imdbVotes+" votes");
+  if(data.metascore&&data.metascore!=="N/A")scoreParts.push("Metascore "+data.metascore+"/100");
+  if(scoreParts.length)line("Ratings",scoreParts.join(" · "));
+  line("Rated",data.rated);
+  line("Director",data.director);
+  line("Writers",data.writer);
+  line("Awards",data.awards);
+  line("Language",data.language);
+  line("Country",data.country);
+  line("Box office",data.boxOffice);
+  if(Array.isArray(data.ratings)&&data.ratings.length)line("Other ratings",data.ratings.map(x=>x.source+": "+x.value).join(" · "));
+  if(data.imdbID){
+   const link=document.createElement("a");link.href="https://www.imdb.com/title/"+encodeURIComponent(data.imdbID)+"/";link.target="_blank";link.rel="noopener noreferrer";link.textContent="View IMDb title ↗";link.style.cssText="display:inline-block;margin-top:5px;color:#e8bd69;font-size:12px";omdbExtra.appendChild(link);
+  }
+ }catch(e){
+  if(detailTitle.textContent===m.title)omdbExtra.textContent="Additional IMDb ratings and details are unavailable right now.";
+ }
 };
 </script>
 <script>
