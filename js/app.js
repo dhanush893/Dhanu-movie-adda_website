@@ -2,6 +2,7 @@
  const $=id=>document.getElementById(id),api=window.DhanuAPI,wl=window.DhanuWatchlist;
  const img=p=>p?"https://image.tmdb.org/t/p/w500"+p:"";
  const backdrop=p=>p?"https://image.tmdb.org/t/p/w1280"+p:"";
+ const supportedLanguages=["kn","te","ta","hi","ml"];
  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
  const genres=[["Action",28],["Adventure",12],["Animation",16],["Comedy",35],["Crime",80],["Documentary",99],["Drama",18],["Family",10751],["Fantasy",14],["Horror",27],["Mystery",9648],["Romance",10749],["Science Fiction",878],["Thriller",53]];
  let accountMode="login",signedIn=false,accountEmail="",lastDetail=null;
@@ -9,7 +10,7 @@
  function routeFromHistory(){const hash=location.hash;if(hash==="#detail"&&lastDetail){route("view-detail",false);return}const views={"#home":"view-home","#search":"view-search","#mylist":"view-mylist","#account":"view-account"};route(views[hash]||"view-home",false)}
  window.addEventListener("popstate",routeFromHistory);window.addEventListener("hashchange",routeFromHistory);
  function card(m){const tv=m.media_type==="tv"||!!m.first_air_date,title=m.title||m.name||"Untitled",date=m.release_date||m.first_air_date||"";return '<article class="movie-card" role="button" tabindex="0" data-movie="'+esc(m.id)+'" data-media="'+(tv?"tv":"movie")+'"><img class="poster" loading="lazy" src="'+esc(img(m.poster_path))+'" alt="'+esc(title)+'"><h3>'+esc(title)+'</h3><small>'+esc(date.slice(0,4))+(m.vote_average?" · ★ "+Number(m.vote_average).toFixed(1):"")+'</small></article>'}
- function showCards(host,items,empty="No titles available."){host.innerHTML=items.length?items.map(card).join(""):'<p class="empty-state">'+esc(empty)+'</p>'}
+ function showCards(host,items,empty="No titles available."){items=items.filter(x=>supportedLanguages.includes(x.original_language));host.innerHTML=items.length?items.map(card).join(""):'<p class="empty-state">'+esc(empty)+'</p>'}
  function renderList(){const host=$("mylist-grid");if(host)showCards(host,wl.all(),"Your list is empty. Open a title and select Add to My List.")}
  async function loadRow(type,id,limit=18){const host=$(id);try{const d=await api.tmdb(type);showCards(host,(d.results||[]).filter(x=>x.poster_path).slice(0,limit));}catch(e){host.innerHTML='<p class="load-error">'+esc(e.message)+' <button class="btn secondary" data-retry="'+type+'" data-target="'+id+'">Retry</button></p>'}}
  async function loadGenres(){const symbols={Action:"⚡",Adventure:"🧭",Animation:"✦",Comedy:"☻",Crime:"◈",Documentary:"▤",Drama:"◉",Family:"⌂",Fantasy:"✧",Horror:"☾",Mystery:"⌕",Romance:"♡","Science Fiction":"✦",Thriller:"◉"};$("genre-filters").innerHTML=genres.map(([name,id])=>'<button class="genre-chip genre-tile" type="button" data-genre="'+id+'"><span class="genre-symbol">'+(symbols[name]||"✦")+'</span><span>'+name+'</span></button>').join("")}
