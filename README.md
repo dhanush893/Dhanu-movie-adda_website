@@ -44,3 +44,8 @@ Built by **Dhanush**. Movie data, images and trailers are provided by [TMDB](htt
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+
+## Visual design reference
+
+The mobile home-screen layout is an independent web adaptation inspired by the Zangetsu app screenshots supplied as a design reference. DHANU MOVIE ADDA uses its own branding, TMDB catalogue, account system and server-side API integrations; Zangetsu app source code and streaming extractors are not included in this website.
