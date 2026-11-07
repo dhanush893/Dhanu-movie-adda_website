@@ -11,7 +11,10 @@ A responsive, dark-and-gold movie and series discovery website built with vanill
 - Top 10 movies list, ranked by TMDB's top-rated movie results.
 - Live multi-search for movies and series.
 - Movie and series detail pages with synopsis, genres, cast and trailers when available.
-- My List saved locally, with optional account-backed cloud sync after sign-in.\n- Sign-in and registration through the MongoDB account API.\n- IMDb ratings and additional metadata via the secure OMDb proxy when configured.\n- India streaming availability and provider links via the secure Watchmode proxy when configured.
+- My List saved locally, with optional account-backed cloud sync after sign-in.
+- Sign-in and registration through the MongoDB account API.
+- IMDb ratings and additional metadata via the secure OMDb proxy when configured.
+- India streaming availability and provider links via the secure Watchmode proxy when configured.
 - Footer attribution and Telegram community link.
 
 ## Setup and deployment
@@ -26,7 +29,20 @@ This project uses Vercel serverless API routes. Keep all API credentials on the 
 
 The frontend calls same-origin `/api/tmdb`, `/api/omdb`, `/api/watchmode` and `/api/account` routes. Opening `index.html` directly or using GitHub Pages alone will not run Vercel serverless functions.
 
-## Environment variables\n\n| Variable | Required for |\n|---|---|\n| `TMDB_API_TOKEN` | Movie and series catalogue (required) |\n| `MONGODB_URI` | User accounts and cloud sync |\n| `SESSION_SECRET` | Signed account sessions (minimum 32 characters) |\n| `OMDB_API_KEY` | Optional IMDb ratings and extra metadata |\n| `WATCHMODE_API_KEY` | Optional streaming provider availability |\n| `MONGODB_DB` | Optional database name; defaults to `dhanu_movie_adda` |\n\nAll values must be configured in Vercel Project Settings → Environment Variables, not in frontend files.\n\n## Telegram community URL
+## Environment variables
+
+| Variable | Required for |
+|---|---|
+| `TMDB_API_TOKEN` | Movie and series catalogue (required) |
+| `MONGODB_URI` | User accounts and cloud sync |
+| `SESSION_SECRET` | Signed account sessions (minimum 32 characters) |
+| `OMDB_API_KEY` | Optional IMDb ratings and extra metadata |
+| `WATCHMODE_API_KEY` | Optional streaming provider availability |
+| `MONGODB_DB` | Optional database name; defaults to `dhanu_movie_adda` |
+
+All values must be configured in Vercel Project Settings → Environment Variables, not in frontend files.
+
+## Telegram community URL
 
 In `index.html`, replace the placeholder `https://t.me/` on the **Join our Telegram Community** link with your actual public channel or group invite URL.
 
@@ -35,7 +51,8 @@ In `index.html`, replace the placeholder `https://t.me/` on the **Join our Teleg
 - HTML5
 - CSS3 (responsive layouts, glass surfaces and reduced-motion support)
 - Vanilla JavaScript
-- TMDB, OMDb and Watchmode APIs through server-side Vercel proxies\n- MongoDB account and cloud-sync API
+- TMDB, OMDb and Watchmode APIs through server-side Vercel proxies
+- MongoDB account and cloud-sync API
 
 ## Attribution
 
@@ -43,7 +60,7 @@ Built by **Dhanush**. Movie data, images and trailers are provided by [TMDB](htt
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+GNU Affero General Public License v3.0 (AGPL-3.0) — see [LICENSE](LICENSE).
 
 
 ## Visual design reference
