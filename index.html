@@ -19,8 +19,9 @@
       <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
       <path d="M2 9h20M7 5v4M17 5v4M7 15v4M17 15v4" stroke="currentColor" stroke-width="1.6"/>
     </svg>
-    <span class="brand-name">Dhanu <em>Movie Adda</em></span>
+    <span class="brand-name">Dhanu <em>movie adda</em></span>
   </a>
+  <div class="header-search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="search-input" type="search" placeholder="Search movies..." autocomplete="off" aria-label="Search movies"></div>
   <nav class="nav-links" aria-label="Primary">
     <a href="#home" class="nav-link" data-route="view-home">Home</a>
     <a href="#search" class="nav-link" data-route="view-search">Search</a>
@@ -31,6 +32,7 @@
 <main>
 
   <section id="view-home" class="view">
+    <section class="recent-section" aria-label="Recent movie releases"><div class="section-head"><h2>Just Released</h2><span>10 LATEST · KANNADA / HINDI / TELUGU / TAMIL</span></div><div id="recent-releases" class="recent-window"><p class="loading">Loading recent releases…</p></div></section>
     <div id="hero" class="hero">
       <p class="loading">Loading the marquee…</p>
     </div>
@@ -40,10 +42,7 @@
   <section id="view-search" class="view" hidden>
     <div class="search-head">
       <h1>Search</h1>
-      <div class="search-bar">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input id="search-input" type="search" placeholder="Search for a movie…" autocomplete="off" aria-label="Search for a movie">
-      </div>
+      <p class="search-hint">Find movies across Kannada, Hindi, Telugu and Tamil cinema.</p>
     </div>
     <div id="search-results" class="grid">
       <div class="empty-state"><p>Search for a movie to get started.</p></div>
