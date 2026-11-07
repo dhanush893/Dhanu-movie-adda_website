@@ -5,6 +5,7 @@ A responsive movie discovery and personal-library website with a premium black-a
 ## Features
 - Live trending movie feed, search and movie metadata through TMDB
 - Posters, synopsis, release year, TMDB rating, genres, runtime, cast and official YouTube trailers when available
+- OMDb enrichment in movie details: IMDb rating/votes, Metascore, director, writers, awards, language, country and box office when available
 - Multiple local profiles (up to six), each with its own watchlist, favourites and viewing activity
 - Continue Watching, progress tracking and mark-as-watched controls
 - Export/import a JSON backup of profiles, watchlists, favourites and viewing history
@@ -37,7 +38,8 @@ Profiles, watchlists, favourites and viewing progress are cached in browser loca
 - `/api/tmdb?type=trending` — trending movies
 - `/api/tmdb?type=popular` — popular movies
 - `/api/tmdb?type=search&q=movie-name` — movie search
-- `/api/tmdb?type=details&id=TMDB_ID` — movie details, credits and videos
+- `/api/tmdb?type=details&id=TMDB_ID` — movie details, credits, videos and IMDb external ID
+- `/api/omdb?imdbId=tt1234567` — OMDb details by IMDb ID; alternatively use `title` and optional `year`
 - `/api/catalog?type=movie` or `tv` — trending movies/series; add `&q=...` to search
 - `/api/catalog?type=anime` or `manga` — AniList catalogue and search
 - `/api/catalog?type=novel` — Open Library catalogue and search
