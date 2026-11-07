@@ -1,7 +1,17 @@
 (() => {
   const config = window.DHANU_CONFIG || {};
   async function request(url) {
-    const response = await fetch(url, { headers: { Accept: "application/json" } });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    let response;
+    try {
+      response = await fetch(url, { headers: { Accept: "application/json" }, signal: controller.signal });
+    } catch (error) {
+      if (error && error.name === "AbortError") throw new Error("The movie service timed out. Please try again.");
+      throw new Error("Could not connect to the movie service. Check your internet connection.");
+    } finally {
+      clearTimeout(timeout);
+    }
     const data = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(data.error || "Request failed (" + response.status + ").");
     return data;
