@@ -398,7 +398,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
   .brand-name em{color:#fff}
   .header-search{display:none}
   main{padding:0 17px calc(82px + env(safe-area-inset-bottom))}
-  .hero.zangetsu-hero{height:min(142vw,610px);min-height:490px;max-height:610px;margin:0 -17px 26px;border:0;border-radius:0 0 25px 25px;background-color:#08080b;background-repeat:no-repeat;background-position:center top;background-size:auto 82%;display:flex;align-items:flex-end;justify-content:center;padding:20px 22px 52px;box-shadow:none}
+  .hero.zangetsu-hero{height:min(142vw,610px);min-height:490px;max-height:610px;margin:0 -17px 26px;border:0;border-radius:0 0 25px 25px;background-color:#08080b;background-repeat:no-repeat;background-position:center top;background-size:100% 100%,auto 82%;display:flex;align-items:flex-end;justify-content:center;padding:20px 22px 52px;box-shadow:none}
   .hero.zangetsu-hero:after{background:linear-gradient(180deg,transparent 20%,rgba(8,8,11,.08) 38%,rgba(8,8,11,.86) 69%,#08080b 100%)}
   .hero.zangetsu-hero .hero-content{width:100%;max-width:520px;text-align:center;z-index:2}
   .hero.zangetsu-hero .eyebrow{font-size:9px;letter-spacing:2px;color:#ff6478}
@@ -437,7 +437,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
   .site-footer{margin-top:24px}
 }
 @media(min-width:701px){
-  .hero.zangetsu-hero{min-height:660px;height:min(70vw,760px);max-height:760px;background-color:#08080b;background-repeat:no-repeat;background-position:center 8%;background-size:auto 88%;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:40px 60px 75px;border-radius:0 0 28px 28px;margin:0 0 35px}
+  .hero.zangetsu-hero{min-height:660px;height:min(70vw,760px);max-height:760px;background-color:#08080b;background-repeat:no-repeat;background-position:center 8%;background-size:100% 100%,auto 88%;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:40px 60px 75px;border-radius:0 0 28px 28px;margin:0 0 35px}
   .hero.zangetsu-hero:after{background:linear-gradient(180deg,transparent 25%,rgba(8,8,11,.25) 48%,#08080b 100%)}
   .hero.zangetsu-hero .hero-content{z-index:2;max-width:720px}
   .hero.zangetsu-hero h1{font-family:Manrope,Arial,sans-serif;font-weight:800;font-size:48px}
