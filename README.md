@@ -1,6 +1,6 @@
 # Dhanu movie adda
 
-A responsive, dark-and-gold movie and series discovery website built with vanilla HTML, CSS and JavaScript, powered by the TMDB API.
+A responsive, dark-and-gold movie and series discovery website built with vanilla HTML, CSS and JavaScript, powered by TMDB. The catalogue is restricted to Kannada, Telugu, Tamil, Hindi and Malayalam original-language movies and series.
 
 ## Homepage features
 
@@ -8,8 +8,8 @@ A responsive, dark-and-gold movie and series discovery website built with vanill
 - Featured trending hero banner with details and official YouTube trailer actions.
 - Horizontal browsing rows for Recently Added, Trending Now, Popular Series and Upcoming Releases.
 - Genre chips that load movies from the selected category.
-- Top 10 movies list, ranked by TMDB's top-rated movie results.
-- Live multi-search for movies and series.
+- Top 10 movies list, ranked by TMDB ratings across the five supported languages.
+- Live multi-search for Kannada, Telugu, Tamil, Hindi and Malayalam movies and series only.\n- Language-restricted trending, latest, upcoming, genre, popular and Top 10 discovery feeds.
 - Movie and series detail pages with synopsis, genres, cast and trailers when available.
 - My List saved locally, with optional account-backed cloud sync after sign-in.
 - Sign-in and registration through the MongoDB account API.
