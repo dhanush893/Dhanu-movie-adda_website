@@ -108,27 +108,6 @@ function validateSnapshot(input) {
   const activeId = profiles.some(p => p.id === input.activeId) ? input.activeId : profiles[0].id;
   return { profiles, activeId, libraries };
 }
-function mergeSnapshots(left, right) {
-  if (!left) return right;
-  const profiles = [...left.profiles];
-  for (const p of right.profiles) {
-    const i = profiles.findIndex(x => x.id === p.id);
-    if (i >= 0) profiles[i] = p;
-    else if (profiles.length < 6) profiles.push(p);
-  }
-  const libraries = {};
-  for (const p of profiles) {
-    const a = left.libraries[p.id] || { watchlist: [], activity: {} };
-    const b = right.libraries[p.id] || { watchlist: [], activity: {} };
-    const activity = { ...a.activity };
-    for (const [title, item] of Object.entries(b.activity)) {
-      const previous = activity[title];
-      if (!previous || Date.parse(item.updatedAt) >= Date.parse(previous.updatedAt)) activity[title] = item;
-    }
-    libraries[p.id] = { watchlist: [...new Set([...(a.watchlist || []), ...(b.watchlist || [])])].slice(0, 1000), favourites: [...new Set([...(a.favourites || []), ...(b.favourites || [])])].slice(0, 1000), activity };
-  }
-  return { profiles, activeId: right.profiles.some(p => p.id === right.activeId) ? right.activeId : left.activeId, libraries };
-}
 async function currentUser(req, users, secret) {
   const session = verify(cookieValue(req, COOKIE), secret);
   if (!session?.sub) return null;
@@ -177,9 +156,10 @@ module.exports = async (req, res) => {
     if (action === "sync" && req.method === "PUT") {
       const incoming = validateSnapshot(req.body);
       if (!incoming) return json(res, 400, { error: "The library backup format is invalid or exceeds its limits." });
-      const merged = mergeSnapshots(validateSnapshot(user.data), incoming);
-      await users.updateOne({ _id: user._id }, { $set: { data: merged, updatedAt: new Date() } });
-      return json(res, 200, { data: merged });
+      // A PUT is a complete, validated snapshot. Replacing it lets users remove saved titles
+      // instead of having the old set-union merge silently add deleted titles back.
+      await users.updateOne({ _id: user._id }, { $set: { data: incoming, updatedAt: new Date() } });
+      return json(res, 200, { data: incoming });
     }
     return json(res, 400, { error: "Unsupported account action." });
   } catch (error) {
