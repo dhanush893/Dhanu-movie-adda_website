@@ -1,335 +1,100 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09090b"><title>DHANU MOVIE ADDA</title><meta name="description" content="Discover films, series and stories with DHANU MOVIE ADDA.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#09090b;--panel:#17171d;--muted:#a1a1aa;--gold:#e8bd69}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#f8f8fa;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Segoe UI,sans-serif}.app{max-width:1450px;margin:auto;padding:0 30px 55px}header{height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px;position:sticky;top:0;z-index:5;background:#09090be8;backdrop-filter:blur(20px);border-bottom:1px solid #ffffff16}.brand{font-size:13px;font-weight:850;letter-spacing:.1em}.mark{display:inline-grid;place-items:center;background:linear-gradient(140deg,#f8df9e,#a46b24);color:#17120a;border-radius:11px;width:34px;height:34px;margin-right:9px}nav{display:flex;gap:24px}a{color:var(--muted);text-decoration:none;font-size:13px}a:hover{color:white}.right{display:flex;align-items:center;gap:12px}input{width:200px;background:#ffffff0c;border:1px solid #ffffff20;border-radius:13px;padding:10px 13px;color:white;outline:none}.admin{font-size:11px;letter-spacing:.08em}.avatar{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#f5d58c,#79501f);color:#15100a;font-weight:bold;margin-right:7px}.hero{min-height:420px;margin:27px 0 44px;border-radius:28px;display:flex;align-items:end;overflow:hidden;background:linear-gradient(90deg,#07080bf2,#07080b9c 50%,transparent),linear-gradient(0deg,#07080b,transparent 60%),url('https://image.tmdb.org/t/p/original/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg') center/cover}.heroText{padding:45px;max-width:650px}.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}.hero h1{font-size:clamp(40px,6vw,68px);line-height:.96;letter-spacing:-.06em;margin:14px 0}.hero p{color:#c7c7ce;line-height:1.6;font-size:14px;max-width:500px}.meta{color:#c7c7ce;font-size:12px;margin:17px 0}.gold{color:var(--gold);font-weight:bold}.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:750;margin:5px 6px 0 0;cursor:pointer}.primary{background:var(--gold);color:#17120a}.glass{background:#ffffff1b;color:white;border:1px solid #ffffff25}.section{margin:38px 0}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}.head h2{font-size:21px;margin:0;letter-spacing:-.04em}.sub{font-size:12px;color:var(--muted);margin-top:5px}.row{display:grid;grid-auto-flow:column;grid-auto-columns:160px;gap:14px;overflow-x:auto;padding:2px 2px 14px}.card{cursor:pointer;min-width:0;transition:transform .2s}.card:hover{transform:translateY(-4px)}.poster{aspect-ratio:2/3;border-radius:15px;overflow:hidden;position:relative;background:#202027}.poster img{width:100%;height:100%;object-fit:cover}.rating{position:absolute;top:8px;left:8px;background:#09090be8;color:var(--gold);padding:5px 7px;border-radius:8px;font-size:11px}.save{position:absolute;right:8px;top:8px;border:1px solid #ffffff40;background:#09090bdc;color:white;border-radius:50%;width:29px;height:29px;cursor:pointer}.movieTitle{font-size:13px;font-weight:700;margin:9px 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.year{font-size:11px;color:var(--muted)}.top{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.topItem{display:flex;align-items:center;gap:10px;background:var(--panel);padding:10px;border:1px solid #ffffff10;border-radius:15px;min-width:0}.rank{font-size:22px;font-weight:900;color:#777}.topItem img{width:43px;height:61px;object-fit:cover;border-radius:7px}.topItem strong{font-size:11px;display:block;overflow:hidden;text-overflow:ellipsis}.topItem small{display:block;color:var(--muted);font-size:10px;margin-top:5px}.topItem em{font-style:normal;color:var(--gold);font-size:11px}.empty{padding:30px;border:1px dashed #393941;border-radius:16px;color:var(--muted);font-size:13px;text-align:center}.modal{display:none;position:fixed;inset:0;background:#000c;backdrop-filter:blur(10px);z-index:9;place-items:center;padding:20px}.modal.show{display:grid}.dialog{position:relative;display:grid;grid-template-columns:210px 1fr;max-width:720px;width:100%;background:#19191f;border:1px solid #ffffff25;border-radius:23px;overflow:hidden}.dialog>img{width:100%;height:100%;min-height:300px;object-fit:cover}.detail{padding:28px}.detail h2{margin:9px 0}.detail p{color:#bbb;line-height:1.6;font-size:13px}.close{position:absolute;right:12px;top:12px;border:0;border-radius:50%;width:30px;height:30px;background:#ffffff25;color:white;font-size:18px;cursor:pointer}footer{border-top:1px solid #292930;padding:25px 0;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:15px}
-@media(max-width:850px){.top{grid-template-columns:repeat(2,1fr)}nav{gap:12px}.app{padding:0 18px 40px}}@media(max-width:600px){.app{padding:0 14px 35px}header{height:65px}.brand{font-size:10px}nav{display:none}input{width:120px;font-size:11px}.admin{font-size:0}.hero{min-height:430px;background-position:58% center}.heroText{padding:23px}.hero h1{font-size:43px}.hero p{font-size:12px}.row{grid-auto-columns:138px;gap:12px}.top{grid-template-columns:1fr}.dialog{grid-template-columns:110px 1fr}.dialog>img{min-height:270px}.detail{padding:22px 15px}.detail h2{font-size:20px}footer{flex-direction:column}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dhanu Movie Adda</title>
+<meta name="description" content="Discover, track and save movies — Dhanu Movie Adda.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%9E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-/* Premium motion and interaction layer */
-:root{color-scheme:dark;--gold-soft:#f4d99b;--line:rgba(255,255,255,.09)}
-::selection{background:rgba(232,189,105,.3);color:#fff}
-body{background:radial-gradient(ellipse at 50% -20%,rgba(167,119,48,.13),transparent 42%),var(--bg);-webkit-font-smoothing:antialiased}
-header{border-bottom:1px solid var(--line);box-shadow:0 10px 35px #0003}
-.brand{display:flex;align-items:center;white-space:nowrap}
-.mark{box-shadow:0 4px 18px #d3a64b35;transition:transform .35s ease,box-shadow .35s ease}
-.brand:hover .mark{transform:rotate(-9deg) scale(1.06);box-shadow:0 5px 25px #d3a64b55}
-a,.btn,.save,.card,.topItem,.poster img{transition:all .25s cubic-bezier(.2,.75,.25,1)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
-input{transition:border-color .2s,background .2s,box-shadow .2s}
-input:focus{border-color:#e8bd69aa;background:#ffffff12;box-shadow:0 0 0 4px #e8bd6918}
-.hero{position:relative;isolation:isolate;box-shadow:0 25px 70px #0008;animation:heroIn .8s ease both}
-.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 35%,#ffffff08 50%,transparent 65%);background-size:220% 100%;animation:heroShimmer 9s ease-in-out infinite}
-.heroText{animation:riseIn .7s .12s both}
-.eyebrow{letter-spacing:.22em}
-.hero h1{text-wrap:balance;text-shadow:0 8px 35px #0008}
-.btn{position:relative;overflow:hidden;transform:translateZ(0)}
-.btn:active{transform:scale(.97)}
-.primary{box-shadow:0 8px 25px #d8aa5230}
-.primary:hover{background:var(--gold-soft);box-shadow:0 10px 30px #d8aa5250;transform:translateY(-2px)}
-.glass:hover{background:#ffffff2b;border-color:#ffffff55;transform:translateY(-2px)}
-.section{animation:riseIn .55s both}
-.head h2{letter-spacing:-.045em}
-.row{scrollbar-width:thin;scrollbar-color:#66502d transparent;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
-.row::-webkit-scrollbar{height:5px}.row::-webkit-scrollbar-thumb{background:#66502d;border-radius:99px}
-.card{scroll-snap-align:start}
-.card:hover{transform:translateY(-5px)}
-.poster{border:1px solid #ffffff12;box-shadow:0 10px 25px #0004}
-.poster:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#0003,transparent 28%,transparent 72%,#0004);opacity:.55}
-.poster img{display:block;transition:transform .55s cubic-bezier(.2,.75,.25,1),filter .3s}
-.card:hover .poster img{transform:scale(1.045);filter:saturate(1.08)}
-.rating{z-index:1;backdrop-filter:blur(12px);border:1px solid #ffffff1a}
-.save{z-index:2;display:grid;place-items:center;font-size:17px;backdrop-filter:blur(12px);transition:transform .2s,background .2s}
-.save:hover{background:var(--gold);color:#17120a;transform:scale(1.08)}
-.topItem{border-radius:17px;background:linear-gradient(145deg,#1b1b22,#121216);transition:transform .25s,border-color .25s,background .25s}
-.topItem:hover{transform:translateY(-3px);border-color:#e8bd6955;background:#202027}
-.topItem img{flex-shrink:0}
-.rank{font-variant-numeric:tabular-nums}
-.empty{background:#ffffff04}
-.modal{opacity:0;transition:opacity .22s ease}
-.modal.show{opacity:1}
-.dialog{box-shadow:0 30px 100px #000b;animation:dialogIn .28s cubic-bezier(.2,.8,.2,1) both}
-.close{transition:background .2s,transform .2s}.close:hover{background:#ffffff40;transform:rotate(90deg)}
-footer{border-color:var(--line)}
-@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes heroIn{from{opacity:.65;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes dialogIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes heroShimmer{0%,65%,100%{background-position:120% 0}80%{background-position:-20% 0}}
-@media(hover:none){.card:hover,.topItem:hover{transform:none}.card:hover .poster img{transform:none}}
-@media(max-width:600px){.hero{border-radius:22px}.heroText{max-width:100%}.section{margin:31px 0}.head h2{font-size:19px}.poster{border-radius:13px}.topItem{padding:11px}.right{gap:7px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+<header class="top-nav">
+  <a href="#home" class="brand">
+    <svg class="brand-mark" width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M2 9h20M7 5v4M17 5v4M7 15v4M17 15v4" stroke="currentColor" stroke-width="1.6"/>
+    </svg>
+    <span class="brand-name">Dhanu <em>Movie Adda</em></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#home" class="nav-link" data-route="view-home">Home</a>
+    <a href="#search" class="nav-link" data-route="view-search">Search</a>
+    <a href="#mylist" class="nav-link" data-route="view-mylist">My List</a>
+  </nav>
+</header>
 
+<main>
 
-.profile-chip{display:flex;align-items:center;gap:8px;border:1px solid #ffffff20;background:#ffffff0b;color:#f7f4ed;border-radius:999px;padding:5px 10px 5px 5px;cursor:pointer;font:inherit}.profile-chip .avatar{margin:0;width:29px;height:29px}.profile-chip small{font-size:11px;color:#ddd}.profile-chip:hover{border-color:#e8bd6977;background:#ffffff12}
-.section-panel{background:linear-gradient(135deg,#19191f,#101014);border:1px solid #ffffff12;border-radius:22px;padding:20px}.panel-actions,.track-actions,.profile-tools{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}.track-actions .btn{font-size:11px;padding:10px 12px}.track-card{min-width:160px;max-width:190px}.track-card .progress-track{margin:9px 2px 3px}.progress-track{height:4px;background:#ffffff18;border-radius:99px;overflow:hidden;margin-top:8px}.progress-track span{display:block;height:100%;background:linear-gradient(90deg,#a97931,#f4d99b);border-radius:99px}.profile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px}.profile-option{border:1px solid #ffffff18;background:#ffffff08;border-radius:17px;padding:15px;color:white;text-align:left;cursor:pointer}.profile-option.active{border-color:#e8bd69;background:#e8bd6914}.profile-option .avatar{width:42px;height:42px;margin:0 0 10px;font-size:17px}.profile-option strong,.profile-option small{display:block}.profile-option small{color:var(--muted);margin-top:5px;font-size:11px}.profile-tools input{max-width:240px;width:100%}.sync-status{display:flex;align-items:center;gap:9px;color:#c8c8cf;font-size:12px}.sync-dot{width:8px;height:8px;border-radius:50%;background:#d6a64b;box-shadow:0 0 12px #d6a64b77}.modal .detail .track-actions{border-top:1px solid #ffffff18;padding-top:13px}.track-actions input{width:100%;accent-color:#e8bd69}@media(max-width:600px){.profile-chip small{display:none}.profile-chip{padding-right:6px}.section-panel{padding:16px}.profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  <section id="view-home" class="view">
+    <div id="hero" class="hero">
+      <p class="loading">Loading the marquee…</p>
+    </div>
+    <div id="home-rails" class="rail-group"></div>
+  </section>
 
-.media-tabs{display:flex;gap:8px;overflow:auto;padding:3px 1px 12px;scrollbar-width:none}.media-tab{flex:0 0 auto;border:1px solid #ffffff1c;background:#ffffff08;color:#bbb;border-radius:999px;padding:10px 16px;font-size:12px;font-weight:750;cursor:pointer}.media-tab.active,.media-tab:hover{background:linear-gradient(135deg,#f4d99b,#c18b3d);border-color:#e8bd69;color:#17120a}.universe-tools{display:flex;gap:9px;margin:6px 0 17px}.universe-tools input{flex:1;width:auto;min-width:0}.universe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:18px 13px}.universe-card{min-width:0;cursor:pointer}.universe-card .poster{aspect-ratio:2/3}.universe-card .poster img{width:100%;height:100%;object-fit:cover}.universe-card .movieTitle{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.universe-kind{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-top:8px}@media(max-width:600px){.universe-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 11px}.media-tab{padding:9px 13px}.universe-tools .btn{padding:10px 12px}}
+  <section id="view-search" class="view" hidden>
+    <div class="search-head">
+      <h1>Search</h1>
+      <div class="search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="search-input" type="search" placeholder="Search for a movie…" autocomplete="off" aria-label="Search for a movie">
+      </div>
+    </div>
+    <div id="search-results" class="grid">
+      <div class="empty-state"><p>Search for a movie to get started.</p></div>
+    </div>
+  </section>
 
-.favorite{position:absolute;right:43px;top:8px;z-index:2;border:1px solid #ffffff40;background:#09090bdc;color:#f4d99b;border-radius:50%;width:29px;height:29px;cursor:pointer;font-size:16px;backdrop-filter:blur(12px)}.favorite:hover{background:#e8bd69;color:#17120a;transform:scale(1.08)}
-.cloud-auth{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px;max-width:620px}.cloud-auth label{font-size:11px;color:#bbb;display:grid;gap:7px}.cloud-auth input{width:100%;max-width:none}.cloud-auth .panel-actions{grid-column:1/-1}.cloud-auth[hidden],#cloudSignedIn[hidden]{display:none!important}#cloudDot{background:#d6a64b}#cloudDot.online{background:#56c78a;box-shadow:0 0 12px #56c78a77}#cloudDot.offline{background:#dc7777;box-shadow:0 0 12px #dc777777}@media(max-width:600px){.cloud-auth{grid-template-columns:1fr}}
+  <section id="view-detail" class="view" hidden>
+    <div id="detail-content"></div>
+  </section>
 
+  <section id="view-mylist" class="view" hidden>
+    <div class="search-head">
+      <h1>My List</h1>
+    </div>
+    <div id="mylist-grid" class="grid"></div>
+  </section>
 
-/* DHANU MOVIE ADDA — refined typography system */
-:root{--font-ui:"Manrope",sans-serif;--font-display:"Bricolage Grotesque",sans-serif;--font-signature:"Sacramento",cursive}
-body{font-family:var(--font-ui);font-optical-sizing:auto}
-.brand{gap:0;letter-spacing:0}
-.brand-lockup{display:flex;align-items:baseline;gap:7px;white-space:nowrap}
-.brand-script{font-family:var(--font-signature);font-size:31px;font-weight:400;line-height:1;color:var(--gold-soft);letter-spacing:.015em;text-shadow:0 2px 18px #e8bd6928}
-.brand-name{font-family:var(--font-display);font-size:10px;font-weight:800;letter-spacing:.17em;color:#f8f8fa}
-.hero h1,.head h2,.detail h2{font-family:var(--font-display);font-weight:700;letter-spacing:-.035em}
-.hero h1{font-weight:800;letter-spacing:-.055em}
-.movieTitle,.topItem strong,.btn,.media-tab{font-family:var(--font-ui)}
-.eyebrow,.year,.sub,.meta{font-family:var(--font-ui)}
-@media(max-width:600px){.brand-script{font-size:26px}.brand-name{font-size:8px;letter-spacing:.13em}.brand-lockup{gap:5px}}
+</main>
 
-/* Corrected homepage: full-size branding and a swipeable live Top 10 */
-.brand-lockup{align-items:center;gap:6px}
-.brand-script{font-size:30px}
-.brand-name{font-size:13px;letter-spacing:.12em}
-@media(max-width:600px){.brand-script{font-size:27px}.brand-name{font-size:11px;letter-spacing:.1em}}
-.top{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;padding:4px 2px 16px;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#80602d transparent}
-.top::-webkit-scrollbar{height:5px}.top::-webkit-scrollbar-thumb{background:#80602d;border-radius:99px}
-.topItem{flex:0 0 245px;min-height:92px;scroll-snap-align:start;cursor:pointer}
-.topControls{display:flex;align-items:center;gap:8px}
-.topArrow{width:36px;height:36px;border:1px solid #ffffff24;border-radius:50%;background:#ffffff0b;color:#f4d99b;font-size:19px;cursor:pointer}
-.topArrow:hover{background:#e8bd69;color:#17120a}
-.topBanner{margin:18px 0 0;padding:14px 18px;border:1px solid #e8bd6955;border-radius:16px;background:linear-gradient(100deg,#e8bd691f,#ffffff05 65%);color:#f4d99b;font:800 12px var(--font-ui);letter-spacing:.17em;text-transform:uppercase}
-.topBanner span{display:block;color:#f8f8fa;font-size:19px;letter-spacing:-.02em;margin-top:5px}
-@media(max-width:600px){.topItem{flex-basis:220px}.topBanner{font-size:10px}.topBanner span{font-size:17px}}
-#collections{display:none!important}
+<nav class="bottom-nav" aria-label="Primary">
+  <a href="#home" class="nav-link" data-route="view-home">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 01-1 1h-4v-6H9v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="#search" class="nav-link" data-route="view-search">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    <span>Search</span>
+  </a>
+  <a href="#mylist" class="nav-link" data-route="view-mylist">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4h12a1 1 0 011 1v15l-7-4-7 4V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+    <span>My List</span>
+  </a>
+</nav>
 
-.search-section .universe-tools{max-width:760px}.search-section .universe-tools input{width:auto;flex:1;min-width:0}
-#ottRow,#kannadaRow{display:grid;grid-auto-flow:column;grid-auto-columns:160px;gap:14px;overflow-x:auto;overflow-y:hidden;padding:2px 2px 16px;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#80602d transparent}
-#ottRow::-webkit-scrollbar,#kannadaRow::-webkit-scrollbar{height:5px}#ottRow::-webkit-scrollbar-thumb,#kannadaRow::-webkit-scrollbar-thumb{background:#80602d;border-radius:99px}
-#ottRow .card,#kannadaRow .card{scroll-snap-align:start}
-@media(max-width:600px){#ottRow,#kannadaRow{grid-auto-columns:138px;gap:12px}}
-\n/* Custom user-supplied Miracle History wordmark font */\n@font-face{font-family:"Miracle History";src:url("/assets/miracle-history-brand.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}\n.brand-lockup{align-items:center;gap:5px}\n.brand-script,.brand-name{font-family:"Miracle History",cursive;font-size:27px;font-weight:400;line-height:1;letter-spacing:0;text-transform:none;text-shadow:0 2px 18px #e8bd6928}\n.brand-script{color:var(--gold-soft)}\n.brand-name{color:#f8f8fa}\n@media(max-width:600px){.brand-script,.brand-name{font-size:22px}.brand-lockup{gap:4px}}\n</style></head><body><main class="app">
-<header><div class="brand" aria-label="Dhanu movie adda"><span class="mark" aria-hidden="true">✦</span><span class="brand-lockup"><span class="brand-script">Dhanu</span><span class="brand-name">movie adda</span></span></div><nav><a href="#home">Discover</a><a href="#universe">Explore</a><a href="#kannadaTop10">Kannada Top 10</a><a href="#watchlist">Watchlist</a></nav><div class="right"><button class="profile-chip" onclick="document.getElementById(&quot;profiles&quot;).scrollIntoView({behavior:&quot;smooth&quot;})"><span class="avatar" id="activeAvatar">K</span><small id="activeProfileName">KANNADIGA</small></button></div></header>
-<section class="hero" id="home"><div class="heroText"><div class="eyebrow">SOUTH INDIA'S FIRST · GLOBAL MOVIE HUB</div><h1>GLOBAL MOVIES.<br>ONE ADDA.</h1><div class="meta" id="heroMeta"><span class="gold">★ Live trending</span>　Movies from around the world</div><p id="heroDesc">Discover global cinema, explore what is newly streaming on OTT in India, and save every title you want to watch.</p><button class="btn primary" id="heroExplore" onclick="document.querySelector('#movieSearch').scrollIntoView({behavior:'smooth'})">Explore movies ↗</button><button class="btn glass" onclick="document.querySelector('#ottSection').scrollIntoView({behavior:'smooth'})">New on OTT</button></div></section>
-<section class="section search-section" id="movieSearch"><div class="head"><div><h2>Search Global Movies</h2><div class="sub">Find movies from around the world</div></div></div><div class="universe-tools"><input id="search" placeholder="⌕ Search movies, actors or titles…" aria-label="Search global movies"></div><div class="row" id="results"><div class="empty">Search for a movie to see results.</div></div></section>
-<section class="section" id="ottSection"><div class="head"><div><h2>Recently on OTT · India</h2><div class="sub">Recent movies currently available on subscription streaming services</div></div><span class="sub" id="ottStatus">Loading…</span></div><div class="row" id="ottRow"><div class="empty">Loading movies available on OTT…</div></div></section>
+<footer class="site-footer">
+  <p>Built by Dhanush · Movie data and trailers courtesy of TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+</footer>
 
+<div id="trailer-modal" class="modal" hidden>
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-box">
+    <button class="modal-close" data-close-modal aria-label="Close trailer">×</button>
+    <div class="modal-frame-wrap">
+      <iframe id="trailer-frame" src="" title="Trailer" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
 
-<section class="section" id="liveMovies"><div class="head"><div><h2>Live from TMDB</h2><div class="sub">Trending movies and fresh discoveries · Live catalogue</div></div><span class="sub" id="tmdbStatus">Connecting…</span></div><div class="row" id="liveRow"><div class="empty">Loading live movie catalogue…</div></div></section>
-
-<section class="section" id="universe">
- <div class="head"><div><h2>Explore the Universe</h2><div class="sub">Movies, series, anime, manga and novels in one personal library</div></div><span class="sub" id="universeStatus">Choose a category</span></div>
- <div class="media-tabs" role="tablist" aria-label="Media categories"><button class="media-tab active" data-kind="movie">Movies</button><button class="media-tab" data-kind="tv">TV Series</button><button class="media-tab" data-kind="anime">Anime</button><button class="media-tab" data-kind="manga">Manga</button><button class="media-tab" data-kind="novel">Novels</button></div>
- <div class="universe-tools"><input id="universeSearch" placeholder="Search this category…" aria-label="Search selected category"><button class="btn primary" id="universeSearchBtn">Search</button></div>
- <div class="universe-grid" id="universeGrid"><div class="empty">Loading the media universe…</div></div>
-</section>
-
-
-<section class="section" id="profiles"><div class="head"><div><h2>Profiles</h2><div class="sub">Separate watchlists and viewing history on this device</div></div><span class="sub" id="profileCount">1 profile</span></div><div class="section-panel"><div class="profile-grid" id="profileGrid"></div><div class="profile-tools"><input id="newProfileName" maxlength="24" placeholder="New profile name" aria-label="New profile name"><button class="btn primary" onclick="createProfile()">＋ Add profile</button></div></div></section>
-<section class="section" id="continueSection"><div class="head"><div><h2>Continue Watching</h2><div class="sub">Pick up where you left off</div></div><span class="sub" id="progressCount">0 titles</span></div><div class="row" id="continueRow"><div class="empty">Your tracked titles will appear here.</div></div></section>
-<section class="section" id="trackingSection"><div class="head"><div><h2>Viewing Activity</h2><div class="sub">Your watched titles and personal progress</div></div></div><div class="section-panel" id="activityPanel"><div class="empty">Your viewing activity will appear here as you track movies.</div></div></section>
-<section class="section" id="syncSection"><div class="head"><div><h2>Account &amp; Cloud Sync</h2><div class="sub">Securely sync your profiles, watchlists and viewing progress across devices</div></div></div><div class="section-panel"><div class="sync-status"><span class="sync-dot" id="cloudDot"></span><strong id="cloudStatus">Checking account…</strong><span class="sub" id="cloudEmail"></span></div><div id="cloudAuthForm" class="cloud-auth"><label>Email address<input id="cloudEmailInput" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com"></label><label>Password<input id="cloudPasswordInput" type="password" autocomplete="current-password" minlength="8" maxlength="128" placeholder="At least 8 characters"></label><div class="panel-actions"><button class="btn primary" onclick="cloudAuth('login')">Sign in</button><button class="btn glass" onclick="cloudAuth('register')">Create account</button></div><p class="sub">Your password is securely hashed on the server. Never share it with anyone.</p></div><div id="cloudSignedIn" hidden><div class="panel-actions"><button class="btn primary" onclick="refreshCloud()">Sync now</button><button class="btn glass" onclick="cloudLogout()">Sign out</button></div></div><p class="sub" id="cloudMessage" role="status" aria-live="polite">Sign in or create an account to enable secure cloud sync.</p><div class="panel-actions"><button class="btn glass" onclick="exportLibrary()">Export backup</button><button class="btn glass" onclick="document.getElementById(&quot;importLibraryFile&quot;).click()">Import backup</button><input id="importLibraryFile" type="file" accept="application/json" hidden onchange="importLibrary(event)"></div></div></section>
-<section class="section" id="watchlist"><div class="head"><div><h2>My Watchlist</h2><div class="sub">Your personal cinema queue</div></div><span class="sub" id="count">0 saved</span></div><div class="row" id="watchRow"><div class="empty">Your watchlist is empty. Tap + on a movie to save it.</div></div></section>
-<section class="section" id="favourites"><div class="head"><div><h2>My Favourites</h2><div class="sub">Titles you have marked with a heart</div></div><span class="sub" id="favouriteCount">0 favourites</span></div><div class="row" id="favouriteRow"><div class="empty">Your favourites will appear here.</div></div></section>
-
-<section class="section" id="kannadaTop10"><div class="head"><div><h2>Top 10 Kannada Movies</h2><div class="sub">Popular Kannada cinema · live TMDB catalogue</div></div><span class="sub" id="kannadaStatus">Loading…</span></div><div class="row" id="kannadaRow"><div class="empty">Loading Kannada movies…</div></div></section><footer><span>© 2026 DHANU MOVIE ADDA</span><span>Curated by KANNADIGA</span><span>Movie data & images: TMDB · Not affiliated with IMDb</span></footer></main>
-<div class="modal" id="modal" onclick="if(event.target===this)closeMovie()"><div class="dialog"><button class="close" onclick="closeMovie()">×</button><img id="detailPoster" alt="Movie poster"><div class="detail"><div class="eyebrow">Movie details</div><h2 id="detailTitle"></h2><div class="meta" id="detailMeta"></div><p id="detailDesc"></p><button class="btn primary" id="detailSave"></button><div class="track-actions" id="trackingControls"></div></div></div></div>
-<script>
-const movies=[
-["Oppenheimer",2023,"8.3","Drama","ptpr0kGAckfQkJeJIt8st5dglvd.jpg","The story of J. Robert Oppenheimer and his role in the development of the atomic bomb."],
-["Interstellar",2014,"8.7","Sci-Fi","gEU2QniE6E77NI6lCU6Mlem6p6.jpg","A team of explorers travels beyond this galaxy to discover whether mankind has a future among the stars."],
-["Inception",2010,"8.8","Sci-Fi","oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg","A skilled thief is offered a chance to erase his past if he can plant an idea in someone's mind."],
-["The Dark Knight",2008,"9.0","Action","qJ2tW6WMUDux911r6m7haRef0WH.jpg","Batman faces a criminal mastermind who plunges Gotham into chaos."],
-["Dune: Part Two",2024,"8.5","Sci-Fi","1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg","Paul Atreides unites with Chani and the Fremen."],
-["Spider-Man: Across the Spider-Verse",2023,"8.6","Animation","8Vt6mWEReuy4Of61Lnj5XjIe y6.jpg","Miles Morales journeys across the multiverse."],
-["The Batman",2022,"7.8","Action","74xTEgt7R36Fpooo50r9T25onhq.jpg","Batman investigates corruption in Gotham."],
-["Everything Everywhere All at Once",2022,"7.8","Adventure","w3LxiVYdWWfiJb8n7uD3p6t3yZ.jpg","An unlikely hero becomes the centre of a multiverse adventure."],
-["Parasite",2019,"8.5","Thriller","7IiTTgloJzvGI1TAYymCfbfl3vT.jpg","A poor family enters the lives of a wealthy household."],
-["Whiplash",2014,"8.5","Drama","7fn624j5lj3xTme2SgiLCeGrawc.jpg","A young drummer pursues excellence under a demanding instructor."],
-["The Shawshank Redemption",1994,"9.3","Drama","q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg","Two imprisoned men form a lasting friendship."],
-["Pulp Fiction",1994,"8.9","Crime","d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg","Interconnected stories unfold in a stylized crime drama."],
-["The Matrix",1999,"8.7","Sci-Fi","f89aAX9p2ZP8k8Gm3G4m0m5.jpg","A hacker discovers the nature of his reality."],
-["Avengers: Endgame",2019,"8.4","Action","or06FN3Dka5tukK1e9sl16pB3iy.jpg","The Avengers assemble once more to restore balance."],
-["Your Name",2016,"8.4","Animation","q719jXXEzOoYaps6BabgKnONONX.jpg","Two teenagers share a mysterious connection across time."],
-["Joker",2019,"8.4","Thriller","udDclJoHjfjb8Ekgsd4FDteOkCU.jpg","A troubled comedian's life takes a dark turn."],
-["Gladiator",2000,"8.5","Action","ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg","A betrayed Roman general seeks justice."],
-["Coco",2017,"8.4","Animation","gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg","A young musician journeys into the Land of the Dead."],
-["Ford v Ferrari",2019,"8.1","Drama","dR1Ju50iudrOh3YgfwkAU1g2HZe.jpg","A team builds a race car to challenge Ferrari."],
-["Knives Out",2019,"7.9","Mystery","pThyQovXQrw2m0s9x82twj48Jq4.jpg","A detective investigates a novelist's death."]
-].map(x=>({title:x[0],year:x[1],rating:x[2],genre:x[3],poster:"https://image.tmdb.org/t/p/w500/"+x[4].replace(" ",""),desc:x[5]}));
-let saved=JSON.parse(localStorage.getItem("dhanuWatchlist")||"[]");let favourites=JSON.parse(localStorage.getItem("dhanuFavourites")||"[]");const top=[];
-const groups=[["Action & Adventure",movies.filter(m=>["Action","Adventure"].includes(m.genre))],["Science Fiction",movies.filter(m=>m.genre==="Sci-Fi")],["Award-Winning Drama",movies.filter(m=>m.genre==="Drama")],["Animation & Anime",movies.filter(m=>m.genre==="Animation")],["Crime & Mystery",movies.filter(m=>["Crime","Thriller","Mystery"].includes(m.genre))]];
-function card(m){return '<article class="card" onclick="openMovie('+JSON.stringify(m.title)+')"><div class="poster"><img loading="lazy" src="'+m.poster+'" alt="'+m.title+' poster" onerror="this.style.opacity=.15"><span class="rating">★ '+m.rating+'</span><button class="save" aria-label="Save movie" onclick="event.stopPropagation();toggleSave('+JSON.stringify(m.title)+')">'+(saved.includes(m.title)?"✓":"+")+'</button><button class="favorite" aria-label="Toggle favourite" onclick="event.stopPropagation();toggleFavorite('+JSON.stringify(m.title)+')">'+(favourites.includes(m.title)?"♥":"♡")+'</button></div><div class="movieTitle">'+m.title+'</div><div class="year">'+m.year+' · '+m.genre+'</div></article>'}
-function render(){let list=movies.filter(m=>saved.includes(m.title));document.getElementById("count").textContent=list.length+" saved";document.getElementById("watchRow").innerHTML=list.length?list.map(card).join(""):'<div class="empty">Your watchlist is empty. Tap + on a movie to save it.</div>';let favList=movies.filter(m=>favourites.includes(m.title));document.getElementById("favouriteCount").textContent=favList.length+" favourites";document.getElementById("favouriteRow").innerHTML=favList.length?favList.map(card).join(""):'<div class="empty">Your favourites will appear here. Tap ♡ on a title to add it.</div>'}
-function toggleSave(title){saved=saved.includes(title)?saved.filter(x=>x!==title):[...saved,title];localStorage.setItem("dhanuWatchlist",JSON.stringify(saved));render()}
-function toggleFavorite(title){favourites=favourites.includes(title)?favourites.filter(x=>x!==title):[...favourites,title];localStorage.setItem("dhanuFavourites",JSON.stringify(favourites));render()}
-function openMovie(title){let m=movies.find(x=>x.title===title);if(!m)return;document.getElementById("detailPoster").src=m.poster;document.getElementById("detailTitle").textContent=m.title;document.getElementById("detailMeta").textContent="★ "+m.rating+"　·　"+m.year+"　·　"+m.genre;document.getElementById("detailDesc").textContent=m.desc;let b=document.getElementById("detailSave");b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist";b.onclick=()=>{toggleSave(title);b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist"};document.getElementById("modal").classList.add("show")}
-function closeMovie(){document.getElementById("modal").classList.remove("show")}
-document.getElementById("search").addEventListener("input",e=>{let q=e.target.value.toLowerCase().trim(),el=document.getElementById("results");if(!q){el.innerHTML='<div class="empty">Start typing in the search bar above.</div>';return}let found=movies.filter(m=>(m.title+" "+m.genre).toLowerCase().includes(q));el.innerHTML=found.length?found.map(card).join(""):'<div class="empty">No matching movies in this demo catalogue.</div>'});render();
-</script>
-<script>
-/* Live TMDB integration — requests go through the private Vercel API proxy. */
-(()=>{
- const status=document.getElementById('tmdbStatus');
- const liveRow=document.getElementById('liveRow');
- const img=p=>p?'https://image.tmdb.org/t/p/w500'+p:'';
- const mapMovie=m=>({title:m.title||m.name||'Untitled',year:(m.release_date||m.first_air_date||'').slice(0,4)||'—',rating:Number(m.vote_average||0).toFixed(1),genre:'Movie',poster:img(m.poster_path),desc:m.overview||'No synopsis is available yet.',tmdbId:m.id});
- const request=async(params)=>{const u=new URL('/api/tmdb',location.origin);Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,v));const r=await fetch(u);const data=await r.json();if(!r.ok)throw new Error(data.error||'TMDB request failed');return data};
- const saveIntoCatalogue=items=>items.map(mapMovie).filter(m=>m.tmdbId).map(m=>{const old=movies.find(x=>x.tmdbId===m.tmdbId||x.title.toLowerCase()===m.title.toLowerCase());if(old){Object.assign(old,m);return old}movies.push(m);return m});
- const paint=(el,items)=>{el.innerHTML=items.length?items.map(card).join(''):'<div class="empty">No movies found.</div>'};
- async function loadTrending(){try{const d=await request({type:'trending'});const items=saveIntoCatalogue(d.results||[]);paint(liveRow,items);status.textContent='Live data connected';const ranked=items.slice(0,1);if(feature){const hero=document.querySelector('.hero');hero.style.backgroundImage='linear-gradient(90deg,#07080bf2,#07080b9c 50%,transparent),linear-gradient(0deg,#07080b,transparent 60%),url("'+feature.poster.replace('/w500/','/original/')+'")';document.querySelector('.hero .eyebrow').textContent="SOUTH INDIA'S FIRST · LIVE FEATURE";document.querySelector('.hero h1').textContent=feature.title.toUpperCase();document.querySelector('.hero .meta').textContent='★ '+feature.rating+' · '+feature.year+' · LIVE TRENDING';document.querySelector('.hero p').textContent=feature.desc||'Discover what is trending now on DHANU MOVIE ADDA.';document.querySelector('.hero .primary').onclick=()=>openMovie(feature.title)}render()}catch(e){status.textContent='API setup required';liveRow.innerHTML='<div class="empty">Live movie data will appear after the TMDB token is added to your Vercel environment variables.</div>';console.warn(e)}}
-
- const searchInput=document.getElementById('search');
- let timer;
- searchInput.addEventListener('input',()=>{
-  clearTimeout(timer);const q=searchInput.value.trim();
-  if(!q)return;
-  timer=setTimeout(async()=>{try{const d=await request({type:'search',q});const items=saveIntoCatalogue(d.results||[]);const local=movies.filter(m=>(m.title+' '+m.genre).toLowerCase().includes(q.toLowerCase()));const merged=[...items,...local.filter(x=>!items.some(y=>y.title===x.title))];paint(document.getElementById('results'),merged);render()}catch(e){console.warn('TMDB search:',e)}},350);
- });
- loadTrending();
-})();
-</script>
-<script>
-/* Enrich the existing movie detail sheet with current TMDB credits and trailer data. */
-window.openMovie=async function(title){
- const m=movies.find(x=>x.title===title);if(!m)return;
- const detailTitle=document.getElementById("detailTitle");
- document.getElementById("detailPoster").src=m.poster||"";
- detailTitle.textContent=m.title;
- document.getElementById("detailMeta").textContent="★ "+m.rating+" · "+m.year+" · "+m.genre;
- document.getElementById("detailDesc").textContent=m.desc||"Loading movie information…";
-
- let extra=document.getElementById("tmdbExtra");
- if(!extra){extra=document.createElement("div");extra.id="tmdbExtra";document.querySelector(".detail").appendChild(extra)}
- let omdbExtra=document.getElementById("omdbExtra");
- if(!omdbExtra){omdbExtra=document.createElement("div");omdbExtra.id="omdbExtra";omdbExtra.style.cssText="margin-top:15px;padding-top:12px;border-top:1px solid #ffffff18";document.querySelector(".detail").appendChild(omdbExtra)}
- extra.textContent=m.tmdbId?"Loading cast and trailer…":"";
- omdbExtra.textContent="Loading additional ratings and movie information…";
-
- const b=document.getElementById("detailSave");
- b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist";
- b.onclick=()=>{toggleSave(title);b.textContent=saved.includes(title)?"✓ Saved to watchlist":"＋ Add to watchlist"};
- document.getElementById("modal").classList.add("show");
-
- let tmdbData=null;
- if(m.tmdbId){
-  try{
-   const u=new URL("/api/tmdb",location.origin);u.searchParams.set("type","details");u.searchParams.set("id",m.tmdbId);
-   const r=await fetch(u);if(!r.ok)throw new Error("TMDB details unavailable");
-   tmdbData=await r.json();
-   if(detailTitle.textContent!==m.title)return;
-   document.getElementById("detailDesc").textContent=tmdbData.overview||m.desc||"No synopsis available.";
-   const genres=(tmdbData.genres||[]).map(g=>g.name).join(", ");
-   const cast=(tmdbData.credits?.cast||[]).slice(0,5).map(c=>c.name).join(" · ");
-   const trailer=(tmdbData.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer"&&v.official)|| (tmdbData.videos?.results||[]).find(v=>v.site==="YouTube"&&v.type==="Trailer");
-   document.getElementById("detailMeta").textContent="★ "+Number(tmdbData.vote_average||0).toFixed(1)+" · "+(tmdbData.release_date||"").slice(0,4)+" · "+(tmdbData.runtime?tmdbData.runtime+" min":"Runtime unavailable")+(genres?" · "+genres:"");
-   extra.textContent=cast?"Cast: "+cast:"";
-   if(trailer){const link=document.createElement("a");link.href="https://www.youtube.com/watch?v="+encodeURIComponent(trailer.key);link.target="_blank";link.rel="noopener noreferrer";link.textContent="Watch official trailer ↗";link.style.cssText="display:inline-block;margin-top:12px;color:#e8bd69;font-size:13px";extra.appendChild(document.createElement("br"));extra.appendChild(link)}
-  }catch(e){extra.textContent="Additional TMDB cast and trailer details are temporarily unavailable."}
- }
-
- // Prefer the exact IMDb ID returned by TMDB; fall back to title and year for older catalogue entries.
- try{
-  const u=new URL("/api/omdb",location.origin);
-  if(tmdbData?.external_ids?.imdb_id)u.searchParams.set("imdbId",tmdbData.external_ids.imdb_id);
-  else{
-   u.searchParams.set("title",m.title);
-   if(/^\d{4}$/.test(String(m.year||"")))u.searchParams.set("year",String(m.year));
-  }
-  const r=await fetch(u);const data=await r.json();
-  if(!r.ok)throw new Error(data.error||"OMDb details unavailable");
-  if(detailTitle.textContent!==m.title)return;
-  omdbExtra.textContent="";
-  const heading=document.createElement("div");heading.textContent="ADDITIONAL INFORMATION · OMDb";heading.style.cssText="color:#e8bd69;font-size:10px;font-weight:800;letter-spacing:.14em;margin-bottom:10px";omdbExtra.appendChild(heading);
-  const line=(label,value)=>{
-   if(!value||value==="N/A")return;
-   const p=document.createElement("p");p.style.cssText="margin:7px 0;color:#c9c9cf;font-size:12px;line-height:1.55";
-   const strong=document.createElement("strong");strong.textContent=label+": ";strong.style.color="#f4d99b";
-   p.append(strong,document.createTextNode(value));omdbExtra.appendChild(p);
-  };
-  const scoreParts=[];
-  if(data.imdbRating&&data.imdbRating!=="N/A")scoreParts.push("IMDb "+data.imdbRating+"/10");
-  if(data.imdbVotes&&data.imdbVotes!=="N/A")scoreParts.push(data.imdbVotes+" votes");
-  if(data.metascore&&data.metascore!=="N/A")scoreParts.push("Metascore "+data.metascore+"/100");
-  if(scoreParts.length)line("Ratings",scoreParts.join(" · "));
-  line("Rated",data.rated);
-  line("Director",data.director);
-  line("Writers",data.writer);
-  line("Awards",data.awards);
-  line("Language",data.language);
-  line("Country",data.country);
-  line("Box office",data.boxOffice);
-  if(Array.isArray(data.ratings)&&data.ratings.length)line("Other ratings",data.ratings.map(x=>x.source+": "+x.value).join(" · "));
-  if(data.imdbID){
-   const link=document.createElement("a");link.href="https://www.imdb.com/title/"+encodeURIComponent(data.imdbID)+"/";link.target="_blank";link.rel="noopener noreferrer";link.textContent="View IMDb title ↗";link.style.cssText="display:inline-block;margin-top:5px;color:#e8bd69;font-size:12px";omdbExtra.appendChild(link);
-  }
- }catch(e){
-  if(detailTitle.textContent===m.title)omdbExtra.textContent="Additional IMDb ratings and details are unavailable right now.";
- }
-};
-</script>
-<script>
-(()=>{
- const PROFILE_KEY="dhanuProfilesV1",ACTIVE_KEY="dhanuActiveProfileV1";
- let profiles=JSON.parse(localStorage.getItem(PROFILE_KEY)||"null")||[{id:"main",name:"KANNADIGA",avatar:"K"}];
- let activeId=localStorage.getItem(ACTIVE_KEY)||profiles[0].id;
- if(!profiles.some(p=>p.id===activeId))activeId=profiles[0].id;
- const storageKey=id=>"dhanuLibraryV1:"+id;
- const read=id=>{try{const value=JSON.parse(localStorage.getItem(storageKey(id))||'{"watchlist":[],"favourites":[],"activity":{}}');return {...value,favourites:Array.isArray(value.favourites)?value.favourites:[]}}catch(e){return {watchlist:[],favourites:[],activity:{}}}};
- let library=read(activeId);if(activeId==="main"&&!localStorage.getItem(storageKey(activeId))){try{library.watchlist=JSON.parse(localStorage.getItem("dhanuWatchlist")||"[]");library.favourites=JSON.parse(localStorage.getItem("dhanuFavourites")||"[]");}catch(e){library.watchlist=[];library.favourites=[];}}
- const activeProfile=()=>profiles.find(p=>p.id===activeId)||profiles[0];
- let cloudUser=null,cloudBusy=false,pushTimer=null,applyingCloud=false,localVersion=0;
- const cloudStatus=(message,state)=>{const label=document.getElementById("cloudStatus"),msg=document.getElementById("cloudMessage"),dot=document.getElementById("cloudDot"),email=document.getElementById("cloudEmail"),form=document.getElementById("cloudAuthForm"),signed=document.getElementById("cloudSignedIn");if(label)label.textContent=cloudUser?"Cloud account connected":"Not signed in";if(msg)msg.textContent=message;if(dot)dot.className="sync-dot "+(state||"");if(email)email.textContent=cloudUser?cloudUser.email:"";if(form)form.hidden=!!cloudUser;if(signed)signed.hidden=!cloudUser;};
- const localSnapshot=()=>({profiles:profiles,activeId:activeId,libraries:Object.fromEntries(profiles.map(p=>{const lib=p.id===activeId?library:read(p.id);return [p.id,{...lib,favourites:Array.isArray(lib.favourites)?lib.favourites:[]}]}))});
- const applyCloudSnapshot=data=>{if(!data||!Array.isArray(data.profiles)||!data.profiles.length)return;applyingCloud=true;profiles=data.profiles.slice(0,6);profiles.forEach(p=>{const lib=data.libraries&&data.libraries[p.id];if(lib)localStorage.setItem(storageKey(p.id),JSON.stringify({watchlist:Array.isArray(lib.watchlist)?lib.watchlist:[],favourites:Array.isArray(lib.favourites)?lib.favourites:[],activity:lib.activity&&typeof lib.activity==="object"?lib.activity:{}}));});activeId=profiles.some(p=>p.id===data.activeId)?data.activeId:profiles[0].id;library=read(activeId);localStorage.setItem(PROFILE_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_KEY,activeId);localStorage.setItem(storageKey(activeId),JSON.stringify(library));applyingCloud=false;window.render();};
- const cloudRequest=async(action,method="GET",body)=>{const response=await fetch("/api/account?action="+encodeURIComponent(action),{method,credentials:"same-origin",headers:body?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined});const data=await response.json().catch(()=>({error:"Unexpected server response."}));if(!response.ok)throw new Error(data.error||"Cloud request failed.");return data;};
- const persist=()=>{localStorage.setItem(PROFILE_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_KEY,activeId);localStorage.setItem(storageKey(activeId),JSON.stringify(library));if(!applyingCloud){localVersion++;if(cloudUser){clearTimeout(pushTimer);pushTimer=setTimeout(()=>refreshCloud(),1200);}}};
- const refreshCloud=async()=>{if(!cloudUser||cloudBusy)return;cloudBusy=true;const versionAtStart=localVersion;cloudStatus("Syncing your library…","");try{const result=await cloudRequest("sync","PUT",localSnapshot());if(localVersion!==versionAtStart){clearTimeout(pushTimer);pushTimer=setTimeout(()=>refreshCloud(),150);}else{applyCloudSnapshot(result.data);cloudStatus("All profiles and library data are synced.","online");}}catch(e){cloudStatus(e.message+" Your local changes remain saved on this device.","offline");}finally{cloudBusy=false;}};
- const connectCloud=async()=>{await refreshCloud();};
- window.cloudAuth=async mode=>{const email=document.getElementById("cloudEmailInput").value.trim(),password=document.getElementById("cloudPasswordInput").value;if(!email||!password){cloudStatus("Enter your email and password.","offline");return;}cloudStatus(mode==="login"?"Signing in…":"Creating account…","");try{const result=await cloudRequest(mode,"POST",{email,password});cloudUser=result.user;document.getElementById("cloudPasswordInput").value="";cloudStatus("Account authenticated. Merging this device's library…","");await connectCloud();}catch(e){cloudUser=null;cloudStatus(e.message,"offline");}};
- window.cloudLogout=async()=>{try{await cloudRequest("logout","POST",{});}catch(e){}cloudUser=null;cloudStatus("Signed out. Your local library remains on this device.","");};
- window.refreshCloud=refreshCloud;
- const restoreCloudSession=async()=>{try{const result=await cloudRequest("me");cloudUser=result.user;cloudStatus("Account found. Syncing your local library…","");await connectCloud();}catch(e){cloudUser=null;cloudStatus("Sign in to enable cloud sync. "+(e.message.includes("MONGODB_URI")||e.message.includes("SESSION_SECRET")?e.message:""),"");}};
-
- const baseRender=window.render;
- const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
- const getMovie=t=>movies.find(m=>m.title===t);
- const syncSaved=()=>{saved=library.watchlist.slice();favourites=(library.favourites||[]).slice();localStorage.setItem("dhanuWatchlist",JSON.stringify(saved));localStorage.setItem("dhanuFavourites",JSON.stringify(favourites));};
- window.render=function(){syncSaved();baseRender();renderProfiles();renderActivity();};
- window.toggleSave=function(title){library.watchlist=library.watchlist.includes(title)?library.watchlist.filter(x=>x!==title):library.watchlist.concat(title);persist();window.render();};
- window.toggleFavorite=function(title){library.favourites=library.favourites||[];library.favourites=library.favourites.includes(title)?library.favourites.filter(x=>x!==title):library.favourites.concat(title);persist();window.render();};
- window.createProfile=function(){const input=document.getElementById("newProfileName"),name=input.value.trim();if(!name)return;if(profiles.length>=6){alert("You can create up to 6 profiles on this device.");return;}const p={id:"p"+Date.now().toString(36),name:name,avatar:name.charAt(0).toUpperCase()};profiles.push(p);activeId=p.id;library={watchlist:[],activity:{}};input.value="";persist();window.render();};
- window.switchProfile=function(id){if(!profiles.some(p=>p.id===id))return;activeId=id;library=read(id);persist();window.render();};
- function renderProfiles(){const grid=document.getElementById("profileGrid");if(!grid)return;grid.innerHTML=profiles.map(p=>'<button class="profile-option '+(p.id===activeId?'active':'')+'" onclick="switchProfile('+JSON.stringify(p.id)+')"><span class="avatar">'+esc(p.avatar)+'</span><strong>'+esc(p.name)+'</strong><small>'+(p.id===activeId?'Active profile':'Switch profile')+'</small></button>').join("");document.getElementById("profileCount").textContent=profiles.length+" / 6 profiles";document.getElementById("activeAvatar").textContent=activeProfile().avatar;document.getElementById("activeProfileName").textContent=activeProfile().name;}
- window.setProgress=function(title,value){const n=Math.max(0,Math.min(100,Number(value)||0));library.activity[title]={progress:n,watched:n>=100,updatedAt:new Date().toISOString()};persist();window.render();};
- window.markWatched=function(title){library.activity[title]={progress:100,watched:true,updatedAt:new Date().toISOString()};persist();window.render();drawControls(title);};
- window.startTracking=function(title){if(!library.activity[title])library.activity[title]={progress:5,watched:false,updatedAt:new Date().toISOString()};persist();window.render();drawControls(title);};
- function renderActivity(){const entries=Object.entries(library.activity),active=entries.filter(([t,a])=>a.progress>0&&!a.watched&&getMovie(t));const row=document.getElementById("continueRow");document.getElementById("progressCount").textContent=active.length+" titles";row.innerHTML=active.length?active.map(([t,a])=>{const m=getMovie(t);return '<article class="track-card"><div class="poster" onclick="openMovie('+JSON.stringify(t)+')"><img loading="lazy" src="'+m.poster+'" alt="'+esc(t)+'"><span class="rating">'+a.progress+'% watched</span></div><div class="movieTitle">'+esc(t)+'</div><div class="progress-track"><span style="width:'+a.progress+'%"></span></div><button class="btn glass" onclick="openMovie('+JSON.stringify(t)+')">Update progress</button></article>';}).join(""):'<div class="empty">Nothing in progress yet. Open a movie and choose Start tracking.</div>';const watched=entries.filter(([t,a])=>a.watched);document.getElementById("activityPanel").innerHTML=entries.length?'<div class="profile-tools"><strong>'+watched.length+' completed</strong><span class="sub">· '+active.length+' in progress · '+entries.length+' tracked</span></div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">'+entries.map(([t,a])=>'<span style="border:1px solid #ffffff18;background:#ffffff08;border-radius:12px;padding:9px 11px;font-size:11px">'+esc(t)+' <b style="color:var(--gold)">'+(a.watched?'✓ Watched':a.progress+'%')+'</b></span>').join("")+'</div>':'<div class="empty">Your viewing activity will appear here as you track movies.</div>';}
- function drawControls(title){const a=library.activity[title]||{progress:0,watched:false},el=document.getElementById("trackingControls");if(!el)return;el.innerHTML='<div style="width:100%;display:flex;justify-content:space-between;gap:8px"><strong style="font-size:12px">Your progress</strong><span class="sub">'+a.progress+'%'+(a.watched?' · Completed':'')+'</span></div><input id="movieProgress" type="range" min="0" max="100" step="5" value="'+a.progress+'" aria-label="Viewing progress" oninput="document.getElementById(\'progressValue\').textContent=this.value+\'%\'"><span id="progressValue" class="sub">'+a.progress+'%</span><button class="btn glass" onclick="startTracking('+JSON.stringify(title)+')">Start tracking</button><button class="btn primary" onclick="setProgress('+JSON.stringify(title)+',document.getElementById(\'movieProgress\').value)">Save progress</button><button class="btn glass" onclick="markWatched('+JSON.stringify(title)+')">✓ Mark watched</button>';}
- const oldOpen=window.openMovie;
- window.openMovie=async function(title){oldOpen(title);drawControls(title);};
- window.exportLibrary=function(){const data={format:"dhanu-movie-adda-library",version:1,exportedAt:new Date().toISOString(),profiles:profiles,activeId:activeId,libraries:Object.fromEntries(profiles.map(p=>[p.id,read(p.id)]))};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="dhanu-movie-adda-backup.json";a.click();URL.revokeObjectURL(url);};
- window.importLibrary=function(event){const file=event.target.files&&event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(d.format!=="dhanu-movie-adda-library"||!Array.isArray(d.profiles)||!d.libraries)throw new Error("Invalid backup file");profiles=d.profiles.slice(0,6);profiles.forEach(p=>{const lib=d.libraries[p.id];if(lib)localStorage.setItem(storageKey(p.id),JSON.stringify({watchlist:Array.isArray(lib.watchlist)?lib.watchlist:[],favourites:Array.isArray(lib.favourites)?lib.favourites:[],activity:lib.activity&&typeof lib.activity==="object"?lib.activity:{}}));});activeId=profiles.some(p=>p.id===d.activeId)?d.activeId:profiles[0].id;library=read(activeId);persist();window.render();alert("Backup imported successfully on this device.");}catch(e){alert("Could not import backup: "+e.message);}event.target.value="";};reader.readAsText(file);};
- syncSaved();window.render();restoreCloudSession();
-})();
-</script>
-
-<script id="universeScript">
-(()=>{const grid=document.getElementById('universeGrid'),status=document.getElementById('universeStatus'),search=document.getElementById('universeSearch');if(!grid)return;let kind='movie',items=[];
-const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function normalize(x){let p=x.poster_path?'https://image.tmdb.org/t/p/w500'+x.poster_path:x.coverImage?.large||(x.cover_i?'https://covers.openlibrary.org/b/id/'+x.cover_i+'-L.jpg':'');return {id:x.id||x.key,title:x.title||x.name||'Untitled',year:String(x.year||x.startDate?.year||x.release_date||x.first_air_date||'').slice(0,4),rating:x.vote_average?Number(x.vote_average).toFixed(1):x.averageScore?Number(x.averageScore/10).toFixed(1):'',poster:p,overview:x.overview||x.description||'',kind};}
-function paint(){grid.innerHTML=items.length?items.map((m,i)=>'<article class="universe-card" data-i="'+i+'"><div class="poster"><img loading="lazy" src="'+esc(m.poster)+'" alt="'+esc(m.title)+' cover" onerror="this.style.opacity=.12"><span class="rating">'+(m.rating?'★ '+esc(m.rating):esc(m.year||kind.toUpperCase()))+'</span><button class="save" data-save="'+i+'" aria-label="Save title">＋</button></div><div class="universe-kind">'+kind.toUpperCase()+'</div><div class="movieTitle">'+esc(m.title)+'</div><div class="year">'+esc(m.year||'Year unavailable')+'</div></article>').join(''):'<div class="empty">No results found. Try another search.</div>';
-grid.querySelectorAll('[data-save]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();let m=items[+b.dataset.save];window.toggleSave&&window.toggleSave('['+kind+'] '+m.title);b.textContent='✓';}));
-grid.querySelectorAll('.universe-card').forEach(c=>c.addEventListener('click',()=>{let m=items[+c.dataset.i];document.getElementById('detailPoster').src=m.poster||'';document.getElementById('detailTitle').textContent=m.title;document.getElementById('detailMeta').textContent=[kind.toUpperCase(),m.year,m.rating?'★ '+m.rating:''].filter(Boolean).join(' · ');document.getElementById('detailDesc').textContent=(m.overview||'No description available.')+'\\n\\nCatalogue: '+({movie:'TMDB',tv:'TMDB',anime:'AniList',manga:'AniList',novel:'Open Library'}[kind]);document.getElementById('trackingControls').innerHTML='<div class="sub">Saved to your personal library using the watchlist control.</div>';let b=document.getElementById('detailSave'),key='['+kind+'] '+m.title;b.textContent=(saved||[]).includes(key)?'✓ Saved to watchlist':'＋ Add to watchlist';b.onclick=()=>{window.toggleSave&&window.toggleSave(key);b.textContent=(saved||[]).includes(key)?'✓ Saved to watchlist':'＋ Add to watchlist';};document.getElementById('modal').classList.add('show');}));}
-async function load(q=''){status.textContent='Loading '+kind+'…';grid.innerHTML='<div class="empty">Loading catalogue…</div>';try{let u=new URL('/api/catalog',location.origin);u.searchParams.set('type',kind);if(q)u.searchParams.set('q',q);let r=await fetch(u),d=await r.json();if(!r.ok)throw Error(d.error||'Catalogue request failed');items=(d.results||[]).map(normalize).filter(x=>x.title!=='Untitled');status.textContent=items.length+' titles · '+({movie:'TMDB',tv:'TMDB',anime:'AniList',manga:'AniList',novel:'Open Library'}[kind]);paint();}catch(e){status.textContent='Source unavailable';grid.innerHTML='<div class="empty">'+esc(e.message)+' — check deployment settings.</div>';}}
-document.querySelectorAll('.media-tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.media-tab').forEach(x=>x.classList.toggle('active',x===b));kind=b.dataset.kind;search.placeholder='Search '+kind+'…';load(search.value.trim());}));
-document.getElementById('universeSearchBtn').addEventListener('click',()=>load(search.value.trim()));search.addEventListener('keydown',e=>{if(e.key==='Enter')load(search.value.trim());});load();})();
-</script>
-
-<script id="discoverySections">
-(()=> {
- const img=p=>p?'https://image.tmdb.org/t/p/w500'+p:'';
- const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const map=x=>({title:x.title||x.name||'Untitled',year:(x.release_date||x.first_air_date||'').slice(0,4)||'—',rating:Number(x.vote_average||0).toFixed(1),genre:'Movie',poster:img(x.poster_path),desc:x.overview||'No synopsis is available yet.',tmdbId:x.id});
- const add=items=>items.map(map).filter(x=>x.tmdbId).map(m=>{const old=movies.find(x=>x.tmdbId===m.tmdbId||x.title.toLowerCase()===m.title.toLowerCase());if(old){Object.assign(old,m);return old}movies.push(m);return m});
- const paint=(el,items)=>{el.innerHTML=items.length?items.map(m=>'<article class="card" role="button" tabindex="0" onclick="openMovie('+JSON.stringify(m.title)+')"><div class="poster"><img loading="lazy" src="'+esc(m.poster)+'" alt="'+esc(m.title)+' poster"><span class="rating">★ '+esc(m.rating)+'</span><button class="save" aria-label="Add to watchlist" onclick="event.stopPropagation();toggleSave('+JSON.stringify(m.title)+')">＋</button><button class="favorite" aria-label="Add to favourites" onclick="event.stopPropagation();toggleFavorite('+JSON.stringify(m.title)+')">♡</button></div><div class="movieTitle">'+esc(m.title)+'</div><div class="year">'+esc(m.year)+'</div></article>').join(''):'<div class="empty">No titles are available right now.</div>'};
- const get=async type=>{const r=await fetch('/api/tmdb?type='+type);const d=await r.json();if(!r.ok)throw new Error(d.error||'Catalogue unavailable');return d.results||[]};
- async function load(type,rowId,statusId){const row=document.getElementById(rowId),status=document.getElementById(statusId);try{const items=add(await get(type));paint(row,type==='kannada'?items.slice(0,10):items);status.textContent=items.length+' titles · live TMDB';}catch(e){status.textContent='Unavailable';row.innerHTML='<div class="empty">'+esc(e.message)+'</div>';}}
- load('ott','ottRow','ottStatus');load('kannada','kannadaRow','kannadaStatus');
-})();
-</script>
-</body></html>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/watchlist.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
