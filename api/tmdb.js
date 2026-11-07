@@ -39,7 +39,7 @@ module.exports = async (req, res) => {
   } else if (type === "details") {
     if (!id || !/^\d+$/.test(String(id))) return res.status(400).json({ error: "A valid movie ID is required." });
     path = "/movie/" + id;
-    params.set("append_to_response", "videos,credits");
+    params.set("append_to_response", "videos,credits,external_ids");
   } else {
     return res.status(400).json({ error: "Unsupported request type." });
   }
