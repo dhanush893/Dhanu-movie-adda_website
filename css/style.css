@@ -38,3 +38,185 @@
 }
 
 .library-intro{padding:14px 0 0}.library-intro h2{font-family:'Bebas Neue',sans-serif;font-size:31px;letter-spacing:1px;margin:0}.library-intro p{margin:3px 0 0;color:var(--muted);font-size:13px}@media(max-width:700px){.library-intro{padding-top:8px}.library-intro h2{font-size:28px}}
+
+
+/* =========================================================
+   DHANU MOVIE ADDA — Liquid Glass / transparent glassmorphism
+   Shared surface system for home, search, account and admin UI.
+   ========================================================= */
+:root{
+  --glass-tint:rgba(255,255,255,.045);
+  --glass-tint-strong:rgba(255,255,255,.075);
+  --glass-edge:rgba(255,255,255,.17);
+  --glass-edge-gold:rgba(215,173,88,.32);
+  --glass-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.12);
+  --glass-blur:18px;
+}
+body{
+  background:
+    radial-gradient(ellipse at 12% 8%,rgba(215,173,88,.09),transparent 34%),
+    radial-gradient(ellipse at 88% 42%,rgba(112,145,170,.07),transparent 36%),
+    var(--bg);
+}
+.top-nav,.bottom-nav{
+  background:rgba(10,10,10,.42);
+  -webkit-backdrop-filter:blur(24px) saturate(165%);
+  backdrop-filter:blur(24px) saturate(165%);
+  border-color:rgba(255,255,255,.13);
+  box-shadow:0 8px 30px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.header-search,.search-bar{
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--glass-edge);
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(175%);
+  backdrop-filter:blur(var(--glass-blur)) saturate(175%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 8px 26px rgba(0,0,0,.14);
+  transition:border-color .25s ease,background .25s ease,box-shadow .25s ease,transform .25s ease;
+}
+.header-search:focus-within,.search-bar:focus-within{
+  background:rgba(255,255,255,.075);
+  border-color:rgba(242,211,140,.62);
+  box-shadow:0 0 0 3px rgba(215,173,88,.10),inset 0 1px 0 rgba(255,255,255,.16),0 12px 32px rgba(0,0,0,.2);
+}
+.hero{
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--glass-shadow);
+}
+.recent-window,.movie-row{
+  scroll-behavior:smooth;
+}
+.recent-card,.movie-card{
+  position:relative;
+  border:1px solid transparent;
+  border-radius:12px;
+  padding:5px;
+  background:rgba(255,255,255,.018);
+  transition:transform .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease;
+}
+.recent-card:hover,.movie-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--glass-edge-gold);
+  background:rgba(255,255,255,.065);
+  box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.13);
+}
+.recent-card .poster,.movie-card .poster{
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 7px 22px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.section-head,.library-intro{
+  position:relative;
+}
+.section-head h2,.search-head h1,.library-intro h2{
+  text-shadow:0 2px 20px rgba(215,173,88,.12);
+}
+.btn,button,.nav-link{
+  -webkit-tap-highlight-color:transparent;
+}
+.btn{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.24);
+  background:linear-gradient(135deg,rgba(242,211,140,.92),rgba(215,173,88,.78));
+  box-shadow:0 7px 22px rgba(215,173,88,.13),inset 0 1px 0 rgba(255,255,255,.38);
+  transition:transform .18s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease;
+}
+.btn:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 18%,rgba(255,255,255,.32) 48%,transparent 72%);
+  transform:translateX(-130%);
+  transition:transform .55s ease;
+}
+.btn:hover:before,.btn:focus-visible:before{transform:translateX(130%)}
+.btn:hover,.btn:focus-visible{
+  filter:brightness(1.08);
+  border-color:rgba(255,255,255,.48);
+  box-shadow:0 10px 28px rgba(215,173,88,.2),inset 0 1px 0 rgba(255,255,255,.48);
+  transform:translateY(-2px);
+}
+.btn:active{
+  transform:translateY(1px) scale(.975);
+  box-shadow:0 3px 10px rgba(0,0,0,.22),inset 0 2px 8px rgba(0,0,0,.16);
+}
+.btn.secondary{
+  color:#f2d38c;
+  background:rgba(255,255,255,.045);
+  border-color:rgba(242,211,140,.38);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 8px 24px rgba(0,0,0,.16);
+}
+.btn.secondary:hover,.btn.secondary:focus-visible{
+  background:rgba(255,255,255,.11);
+  border-color:rgba(242,211,140,.72);
+}
+input,select,textarea{
+  color-scheme:dark;
+}
+input:not([type=checkbox]):not([type=radio]),select,textarea{
+  border-color:rgba(255,255,255,.17);
+}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{
+  outline:2px solid rgba(242,211,140,.72);
+  outline-offset:3px;
+}
+.modal-backdrop{
+  background:rgba(0,0,0,.48);
+  -webkit-backdrop-filter:blur(12px) saturate(125%);
+  backdrop-filter:blur(12px) saturate(125%);
+}
+.modal-box{
+  background:rgba(18,18,18,.56);
+  border:1px solid rgba(255,255,255,.2);
+  -webkit-backdrop-filter:blur(28px) saturate(175%);
+  backdrop-filter:blur(28px) saturate(175%);
+  box-shadow:0 28px 90px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);
+}
+.detail-poster{
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:var(--glass-shadow);
+}
+.detail-extras{
+  border-color:rgba(255,255,255,.15);
+}
+/* Reusable glass surfaces for account forms and any existing/future admin panels. */
+.glass,.glass-panel,.admin-panel,.admin-card,.dashboard-card,.auth-card,.account-panel,.form-panel,.settings-panel,.stat-card{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:16px;
+  -webkit-backdrop-filter:blur(22px) saturate(165%);
+  backdrop-filter:blur(22px) saturate(165%);
+  box-shadow:var(--glass-shadow);
+}
+.admin-nav,.admin-sidebar,.admin-header,.dashboard-header,.account-header{
+  background:rgba(12,12,12,.42);
+  border-color:rgba(255,255,255,.14);
+  -webkit-backdrop-filter:blur(24px) saturate(170%);
+  backdrop-filter:blur(24px) saturate(170%);
+}
+.auth-card input,.account-panel input,.admin-panel input,.admin-panel select,.admin-panel textarea,
+.form-panel input,.form-panel select,.form-panel textarea{
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:10px;
+  color:#fff;
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+.admin-panel button,.admin-card button,.dashboard-card button,.auth-card button,.account-panel button{
+  transition:transform .18s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.admin-panel button:active,.admin-card button:active,.dashboard-card button:active,
+.auth-card button:active,.account-panel button:active{
+  transform:scale(.975);
+}
+@media(max-width:700px){
+  .top-nav,.bottom-nav{background:rgba(10,10,10,.52);-webkit-backdrop-filter:blur(22px) saturate(165%);backdrop-filter:blur(22px) saturate(165%)}
+  .recent-card,.movie-card{background:rgba(255,255,255,.025)}
+  .modal-box{padding:14px;border-radius:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+}
