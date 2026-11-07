@@ -240,3 +240,50 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-vis
   .hero .actions .btn{min-height:42px}
   .site-footer{padding:20px 18px calc(22px + env(safe-area-inset-bottom))}
 }
+
+
+/* Discovery homepage sections */
+.content-section{padding:30px 0 8px;scroll-margin-top:96px}
+.content-section .section-head{align-items:end;margin-bottom:17px}
+.content-section .section-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(27px,3vw,36px);letter-spacing:1px;margin:2px 0 0}
+.eyebrow{display:block;color:var(--gold);font-size:10px;font-weight:800;letter-spacing:1.8px}
+.section-note{font-size:10px;letter-spacing:1.3px;color:#9d927c;font-weight:800}
+.movie-row{display:flex;gap:15px;overflow-x:auto;overscroll-behavior-x:contain;padding:5px 3px 19px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#66512b transparent}
+.movie-row .movie-card{flex:0 0 clamp(132px,15vw,180px);scroll-snap-align:start}
+.movie-card{border:1px solid transparent;border-radius:12px;padding:5px;background:rgba(255,255,255,.025);transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
+.movie-card:hover,.movie-card:focus-visible{transform:translateY(-5px);border-color:var(--glass-edge-gold);background:rgba(255,255,255,.07);box-shadow:0 15px 34px #0007;outline:none}
+.movie-card .poster{transition:transform .25s,filter .25s}
+.movie-card:hover .poster{transform:scale(1.025);filter:brightness(1.1)}
+.genre-list{display:flex;flex-wrap:wrap;gap:10px;padding:3px 0 15px}
+.genre-chip{border:1px solid rgba(255,255,255,.17);border-radius:999px;padding:9px 16px;color:#ddd;background:rgba(255,255,255,.045);backdrop-filter:blur(15px);font-size:12px;font-weight:700;transition:.2s}
+.genre-chip:hover,.genre-chip.selected{color:#17120a;background:linear-gradient(135deg,var(--gold2),var(--gold));border-color:var(--gold2)}
+.genre-results{margin-top:8px}
+.top-ten-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-bottom:12px}
+.top-ten-list .movie-card{display:flex;align-items:center;gap:13px;min-width:0}
+.top-ten-list .movie-card:before{content:counter(topten);counter-increment:topten;flex:0 0 34px;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:35px;color:var(--gold)}
+.top-ten-list{counter-reset:topten}
+.top-ten-list .poster{width:58px;flex:0 0 58px;aspect-ratio:2/3}
+.top-ten-list .movie-card h3{font-size:13px}
+.top-ten-list .movie-card small{display:block}
+.site-footer{display:flex;flex-direction:column;align-items:center;gap:9px;margin-top:35px;padding:32px 18px calc(28px + env(safe-area-inset-bottom));text-align:center;background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.12)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;color:var(--gold);margin:0}
+.footer-brand em{font-style:normal;color:#fff;text-transform:lowercase}
+.site-footer p:not(.footer-brand){margin:0;color:var(--muted);font-size:12px}
+.community-button{display:inline-flex;align-items:center;justify-content:center;margin:7px 0 12px;padding:11px 18px;border-radius:999px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#17120a;font-weight:800;font-size:12px;box-shadow:0 8px 24px #d7ad5825;transition:transform .2s,filter .2s}
+.community-button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.site-footer small{display:block;max-width:820px;color:#777;font-size:10px;line-height:1.7}
+.hero{min-height:490px;margin:22px 0 12px}
+@media(max-width:700px){
+ .content-section{padding:22px 0 5px;scroll-margin-top:130px}
+ .section-note{font-size:9px}
+ .movie-row{gap:11px}
+ .movie-row .movie-card{flex-basis:132px}
+ .top-ten-list{grid-template-columns:1fr;gap:9px}
+ .top-ten-list .movie-card{padding:7px}
+ .hero{min-height:420px}
+ .genre-list{gap:8px}
+ .genre-chip{padding:8px 12px;font-size:11px}
+ .bottom-nav{overflow-x:auto;justify-content:flex-start;gap:3px;padding-left:5px;padding-right:5px}
+ .bottom-nav .nav-link{flex:1 0 58px;min-width:58px}
+ .bottom-nav .nav-link span{font-size:18px;line-height:1.1}
+}
